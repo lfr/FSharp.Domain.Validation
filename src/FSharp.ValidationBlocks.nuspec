@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <!--<id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>-->
+    <id>ValidationBlocks</id>
+    <version>0.9.0</version>
+    <authors>Luis Ferrao</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <iconUrl>https://raw.github.com/everstream/gists/master/icon.png</iconUrl>
+    <summary>Design with types in F# with minimal type declarations</summary>
+    <description>Designing with types with F# can lead to pretty verbose code, this package aims to reduce verbosity to an absolut minimum.</description>
+    <copyright>Copyright ©2019 Luis Ferrao</copyright>
+    <tags>validation blocks fsharp ddd</tags>
+    <projectUrl>http://functionalfunsies.com/2019/12/19/validation-blocks/</projectUrl>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3" />
+    </dependencies>
+  </metadata>
+</package>
+
+
+
+    
