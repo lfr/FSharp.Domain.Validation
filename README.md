@@ -105,7 +105,7 @@ Do **not** force type inference using type annotations as it's unnecessarily ver
 
 ```fsharp
 // incorrect example, do not copy/paste
-let email : Result<Email, TextError list> =     // :(
+let email : Result<Email, TextError list> =      // :(
     Block.validate "incorrect@dont.do"
 
 // correct alternative
