@@ -120,9 +120,9 @@ The `Block.validate` method returns a `Result`, which may not always be necessar
 
 ```fsharp
 // throws an exception if not valid
-Unchecked.blockof "this better be valid"
+Unchecked.blockof "this better be valid"         // → 'block
 // same as above without type inference
-Unchecked.blockof<Text> "this better be valid 2"
+Unchecked.blockof<Text> "this better be valid 2" // → Email
 ```
 
 ## Serialization
