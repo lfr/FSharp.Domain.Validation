@@ -7,23 +7,27 @@ A tiny library with huge potential to simplify and streamline your domain design
 
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks</center> |
 |---|---|
-|<pre>// Single-case union style<br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (x:Tweet) =<br>     let (Tweet s) = x in s<br><br>// Object-oriented style<br>type Tweet private (s) =<br>   inherit Text (s)<br>   static member Validate s = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok</pre>|<pre>type Tweet = private Tweet of Text with<br>   interface IText with<br>      member _.Validate =<br>         fun s → [if s.Length > 280 then IsTooLong 280]</pre>
+|<pre>// Single-case union style<br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (x:Tweet) =<br>     let (Tweet s) = x in s<br><br>// Object-oriented style<br>type Tweet private (s) =<br>   static member Validate s = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre>|<pre>type Tweet = private Tweet of Text with<br>   interface IText with<br>      member _.Validate =<br>         fun s → s.Length > 280 => IsTooLong 280</pre>|
 
-The examples without validation blocks have an additional validation case, with validation blocks this validation is implicit when stating that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, <u>only the validation that is specific to the block itself has to be explicitly declared</u>. One could imagine a similar behavior with OO style types, but there's no simple way to achieve that while keeping constructors private.
+You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit when stating that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules <u>specific to the block itself</u>. One could imagine a similar behavior with OO-style types, but there's no simple way to achieve that while keeping constructors private.
 
 </center>
 
 ## Interface? Really?
 
-While the visceral wish to leave everything OO behind is real, F# is a multi-paradigm language, and with the right discipline certain OO concepts can be extremely useful and expressive. For instance here an interface is a concise way **using a single statement** to both identify a type as a ValidationBlock **and** enforce the definition of validation rules. And you only reference interfaces in the block type definition, there's no references to interfaces anywhere in your code that creates or uses validation blocks.
+F# is a multi-paradigm language. Regardless of whether you think it's a good thing or a bad thing (it's both), with the right discipline certain OO concepts can be harnessed for their expressiveness without any of the baggage. For instance here we use *interface* as an elegant way in a single statement to both:
+* Identify a type as a ValidationBlock
+* Enforce the definition of validation rules
+
+There will otherwise be **no mentions** of interfaces in the code that uses and creates validation blocks, only when you declare the block in your domain definition file.
 
 ## How it works
 
-There's three straightforward components to using this library. First you declare your error types, then you declare your actual domain types like the `Tweet` above, and finally you use them with the provided functions.
+First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions.
 
-### Define your errors
+### Declaring your errors
 
-Before declaring types like the one above, you do need define your error type. This can be a brand new validation-specific discriminated union or part of your existing domain error sum type.
+Before declaring types like the one above, you do need define your error type. This can be a brand new validation-specific discriminated union or part of an existing one.
 
 ```fsharp
 type TextError =
@@ -33,41 +37,44 @@ type TextError =
     | IsMissingOrBlank
 ```
 
-While not strictly necessary, the following single line of code further improves the readability of your type declarations simply by abbreviating the `IBlock<_,_>` interface for a specific primitive type, for instance here's an abbreviation for blocks of strings.
+While not strictly necessary, the next single line of code greatly improves the readability of your type declarations simply by abbreviating the `IBlock<_,_>` interface for a specific primitive type.
 
 ```fsharp
+// all string blocks can now interface IText instead of IBlock<string, TextError>
 type IText = inherit IBlock<string, TextError>
 ```
 
-### Type declaration
-Type declaration is reduced to the absolute minimum, a type is given a name and a private constructor, and the interface above that essentially makes them *validation blocks*. In addition to identifying the type as a ValidationBlock, the interface also ensures that you define the validation rule, which consists of a function of the primitive type that returns a list of one or more errors depending on one or more conditions respectively.
+### Declaring ValidationBlocks
+Type declaration is reduced to the absolute minimum. A type is given a name, a private constructor, and the interface above that essentially makes it a **ValidationBlock** and ensures that you define the validation rule.
+
+The  validation rule is a function of the primitive type (`string` here) that returns a list of one or more errors depending on the stated conditions.
 
 ```fsharp
 /// Single or multi-line non-null non-blank text without any additional validation
 type FreeText = private FreeText of string with
     interface IText with
         member _.Validate =
-            // error condition
+            // validation rule
             fun s ->
                 [if s |> String.IsNullOrWhiteSpace then IsMissingOrBlank]
 ```
 
-### Further simplifying type declarations
-The type declaration above can be simplified further using the provided `=>` operator that combines a predicate of `string` (in this case) with an error when the predicate is true.
+### Using operators to further simplify type declarations
+The type declaration above can be simplified further using the provided `=>` and `==>` **validation operators** that here combine a predicate of `string` with an error true.
 
 ```fsharp
-/// Alternative type declaration using the => operator
+/// Alternative type declaration using the ==> operator
 type FreeText = private FreeText of string with
     interface IText with
         member _.Validate =
-            // error condition using validation operators
-            String.IsNullOrWhiteSpace => IsMissingOrBlank
+            // validation rule using validation operators
+            String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
-Make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your domain types.
+To use operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/lfr/FSharp.ValidationBlocks/blob/master/src/Example/Text.fs) for more examples of validation operators.
 
 ### Creating and using blocks in your code
 
-Using blocks is very easy, let's say you have a block binding called `email`, you can simply access the string value of it using the following:
+Using blocks is very easy, let's say you have a block binding called `email`, you can simply access its value using the following:
 
 ```fsharp
 // get the primitive value from the block
@@ -81,33 +88,55 @@ There's also an experimental operator `%` that essentially does the same thing:
 %email // → string
 ```
 
-Creating a block from a string is equally simple:
+Creating a block is just as simple:
 
 ```fsharp
-Block.validate "cartermp@fsharp.org" // creates a block from a string by inferring the type
+// create a block when block type can be inferred
+Block.validate s // → Ok 'block | Error e
 ```
 
-If type inference is not available at a specific code location, then you must specify the block type:
+When type inference isn't possible, specify block type using the generic parameter:
 
 ```fsharp
-Block.validate<Email> "cartermp@fsharp.org" // creates an email block from a string
+// create a block when block type can be inferred
+Block.validate<Tweet> s // → Ok Tweet | Error e
 ```
-Note that the `validate` method returns a `Result`, which may not always be necessary, for instance when de-serializing values that are guaranteed to be valid, you can just use:
+
+Do **not** force type inference using type annotations as it's unnecessarily verbose:
+
 ```fsharp
-Block.ofUnchecked "this better be valid" // throws an exception if not valid
+// incorrect example, do not copy/paste
+let email : Result<Email, TextError list> =     // :(
+    Block.validate "incorrect@dont.do"
+
+// correct alternative
+let email =
+    Block.validate<Email> "cartermp@fsharp.lang" // :)
+```
+
+In both cases the resulting `email` is of type `Result<Email, TextError list>`.
+
+## Exceptions instead of Error
+The `Block.validate` method returns a `Result`, which may not always be necessary, for instance when de-serializing values that are guaranteed to be valid, you can just use:
+
+```fsharp
+// throws an exception if not valid
+Unchecked.blockof "this better be valid"
+// same as above without type inference
+Unchecked.blockof<Text> "this better be valid 2"
 ```
 
 ## Serialization
 
-There's a `System.Text.Json.Serialization.JsonConverter` included, if you add it to your serialization options all blocks are serialized to (and de-serialized from) their primitive type. It is good practice to keep your serialized content unaware & independent from implementation concerns (such as `ValidationBlocks`).
+There's a `System.Text.Json.Serialization.JsonConverter` included, if you add it to your serialization options all blocks are serialized to (and de-serialized from) their primitive type. It is good practice to keep your serialized content independent from implementation considerations such as ValidationBlocks.
 
 ## Not just strings
 
-Strings are the perfect example as it's usually the first type for which developers stitch together validation logic, but this library works with anything, you can create a PositiveInt that's guaranteed to be greater than zero, or a FutureDate that's guaranteed to not be in the past. I haven't given other uses of these blocks much thought myself, but they're 100% generic so the sky is the limit.
+Strings are the perfect example as it's usually the first type for which developers stitch together validation logic, but this library works with anything, you can create a `PositiveInt` that's guaranteed to be greater than zero, or a `FutureDate` that's guaranteed to not be in the past. Lists, vectors, any type of object really, if you can write a predicate against it, you can validate it. They're 100% generic so the sky is the limit.
 
 ## Conclusion
 
-Using validation blocks you'll be able to create airtight domains guaranteed to never have invalid content with very little code. Depending on how much you like Lego&trade;, it may even make designing your domain *fun*. Not only you're writing less code, but your domain code files are much cleaner and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
+Using validation blocks you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain code files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
 
 Tweet [@fishyrock](https://twitter.com/fishyrock) to contribute or give feedback!
 

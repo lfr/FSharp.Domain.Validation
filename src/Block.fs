@@ -1,19 +1,19 @@
 ﻿namespace FSharp.ValidationBlocks
 
 open Microsoft.FSharp.Reflection
-type Flags = System.Reflection.BindingFlags
+open FSharp.ValidationBlocks.Reflection
 
 module Block =
 
-    type Module = interface end
-
-    // The point of this code is to allow calling an instance method on a null instance
-    // This only works on instance methods that do not actually use the instance itself
-    let private nullDelegate (t:System.Type) =
-        let validate = //nameof IBlock<_,_>.Validation doesn't work
-            "Validate"
-        let mi = t.GetMethods(Flags.NonPublic ||| Flags.Instance) |> Array.find (fun mi -> mi.Name.EndsWith validate)
-        System.Delegate.CreateDelegate(typedefof<System.Func<_>>.MakeGenericType([|typeof<obj>|]), null, mi).DynamicInvoke()
+    type Module = interface end    
+    
+    // This enables invoking instance methods on null instances
+    let private genericDelegate =
+        typedefof<System.Func<_>>.MakeGenericType([|typeof<obj>|])        
+    let private nullDelegate t =
+        let mi = (Reflection.blockInfo t).ValidateMethod
+        System.Delegate
+            .CreateDelegate(genericDelegate, null, mi).DynamicInvoke()
         |> fun x -> x, x.GetType().GetMethod("Invoke")
 
 
@@ -30,8 +30,9 @@ module Block =
             | _ -> "single-case single-field union" |> typeError |> failwith
         | _ -> "single-case union" |> typeError |> failwith
 
-    /// Tail recursive validation of the top block and all other blocks its built upon
-    let rec private wrap<'e>
+
+    /// Tail recursive validation of the top block along with the other blocks it's built upon
+    let rec internal wrap<'e>
         (src:obj, rollingCtor:UnionCaseInfo list)
         (blockType:System.Type) : Result<'e> =
 
@@ -64,15 +65,8 @@ module Block =
         | x -> sprintf "Expected a single-case union, but %s contains %i cases." blockType.Name x.Length |> failwith
 
 
-    /// Non-generic version of wrap to facilitate serialization
-    let private wrapMi = typeof<Module>.DeclaringType.GetMethod(nameof wrap, Flags.NonPublic ||| Flags.Static)
-    let internal runtimeWrap (blockType:System.Type) (errorType:System.Type) (src:obj) : IResult =            
-        let mi = wrapMi.MakeGenericMethod([|errorType|])
-        mi.Invoke(null, [|src; List.empty<UnionCaseInfo>; blockType|]) :?> _
-
-
-    /// This is the primary way to create blocks out of their base (primitive) types
-    let validate<'block, 'a, 'error when 'block :> IBlock<'a, 'error>> (src:'a) : Result<'block,'error list> =
+    /// Internal validation method, just a wrapper with some type checks, not meant to be used outside of this library
+    let internal validateInternal<'block, 'a, 'err when 'block :> IBlock<'a,'err>> (src:'a) : Result<'block, 'err list> =
 
         let t = typeof<'block>
 
@@ -85,22 +79,13 @@ module Block =
             t.Name |> sprintf "%s is not a single-case signe-value union with private constructor" |> typeConstraintError
 
         //let result = src |> wrap<'error> t
-        let result = wrap<'error> (src, []) t
+        let result = wrap<'err> (src, []) t
 
         result.ToResult<'block>()
-
-    let ofUnchecked<'block, 'a, 'error when 'block :> IBlock<'a, 'error>> src =
-        match validate src with
-        | Ok block -> block
-        | Error e ->
-            sprintf "Block validation failed with error: %A" e |> failwith
     
     /// This is the primary way to get a value out of a block
     let rec value (src:IBlock<'baseType,'error>) =
         src |> unwrap :?> 'baseType
-
-    /// Same as Block.value
-    let inline (~%) block = value block
 
 
     [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
@@ -109,15 +94,13 @@ module Block =
 
     [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
     let apply (f:IBlock<'baseType -> 'a, 'error>) (x:IBlock<'baseType,'error>) =
-        value x |> value f |> ``return``<'a, 'error>
-
-    
+        value x |> value f |> ``return``<'a, 'error>    
     
     // Equality and comparison
     [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
     let equals<'baseType, 'e when 'baseType : equality>
         (left:IBlock<'baseType, 'e>) (right:IBlock<'baseType, 'e>) =
-        %left = %right
+        value left = value right
     
     [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
     let differs t1 t2 = equals t1 t2 |> not
@@ -125,13 +108,31 @@ module Block =
     [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
     let compareTo<'baseType, 'e when 'baseType :> System.IComparable<'baseType>>
         (left:IBlock<'baseType, 'e>) (right:IBlock<'baseType, 'e>) =
-        (%left).CompareTo(%right)
+        (value left).CompareTo(value right)
+
+type Block<'a, 'e> private () = class end with
+
+    /// Creates a block from the given input if valid, otherwise returns an Error
+    static member validate<'block when 'block :> IBlock<'a,'e>> (inp:'a) : Result<'block, 'e list> =
+        Block.validateInternal<'block, 'a, 'e> inp
 
 
-module Operators =
+module Runtime =
+    
+    let private wrapMi =
+        (nameof Block.wrap, Flags.NonPublic ||| Flags.Static)
+        |> typeof<Block.Module>.DeclaringType.GetMethod
 
-    let (=>) (condition:'a -> bool) (error:'e) (inp:'a) =
-        if condition inp then [error] else []
+    /// Non-generic version of Block.validate, mostly meant for serialization
+    let validate (blockType:System.Type) (input:obj) : IBlockResult =
+        let bi = Reflection.blockInfo blockType
+        let mi = wrapMi.MakeGenericMethod([|bi.ErrorType|])
+        mi.Invoke(null, [|input; List.empty<UnionCaseInfo>; blockType|]) :?> _
+        
 
-    let (!?) (errorConditions:('a -> 'e list) list) (inp:'a) : 'e list =
-        errorConditions |> List.collect (fun f -> f inp)
+type Unchecked<'a> private () = class end with
+
+    /// Creates a block from the given input if valid, otherwise throws an exception
+    static member blockof<'block when 'block :> IBlockOf<'a>> (inp:'a) : 'block =
+        let result = Runtime.validate typeof<'block> inp
+        result.Unbox()

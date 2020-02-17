@@ -6,33 +6,36 @@
     <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>0.9.3</Version>
+    <Version>0.9.5</Version>
     <Authors>Luis Ferrao</Authors>
     <Company />
     <Product>FSharp.ValidationBlocks</Product>
     <Description>Designing with types with F# can lead to pretty verbose code, this package aims to reduce verbosity to an absolut minimum.</Description>
     <Copyright>Copyright © 2019 Luis Ferrao</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>http://functionalfunsies.com/2019/12/19/advent-validation-blocks/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/lfr/FSharp.ValidationBlocks</PackageProjectUrl>
     <PackageTags>validation blocks fsharp ddd</PackageTags>
     <PackageIcon>FSharp.ValidationBlocks.png</PackageIcon>
     <PackageIconUrl />
     <PackageId>FSharp.ValidationBlocks</PackageId>
-    <PackageReleaseNotes>Cleaned up the example code. BREAKING CHANGE: Use Block.value instead of Block.unwrap</PackageReleaseNotes>
+    <PackageReleaseNotes>New public API</PackageReleaseNotes>
+    <AssemblyVersion>0.9.5.0</AssemblyVersion>
+    <FileVersion>0.9.5.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="InternalResult.fs" />
     <Compile Include="Interface.fs" />
+    <Compile Include="Reflection.fs" />
     <Compile Include="Block.fs" />
+    <Compile Include="Operators.fs" />
     <Compile Include="Serialization.fs" />
     <Compile Include="Example\Text.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="FSharp.ValidationBlocks.nuspec" />
-    <None Include="FSharp.ValidationBlocks.png">
+    <None Include="..\FSharp.ValidationBlocks.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

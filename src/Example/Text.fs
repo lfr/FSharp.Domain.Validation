@@ -12,29 +12,16 @@ type TextError =
     | IsMissingOrBlank
 
 /// This interface in not strictly necessary but it makes type declarations
-/// and function signatures a lot lighter and more readable
+/// and function signatures a lot more readable
 type IText = inherit IBlock<string, TextError>
 
-/// While not strictly necessary, a module such as this one provides a better API
-/// than using the Block module's functions directly
+/// This is a good place to define IText-specific functions
 module Text =
 
-    /// Validates the given string into a Text block option result
-    let checkOptional<'text when 'text :> IText> s =
+    /// Validates the given string treating null/blank as a valid result of None
+    let ofOptional<'text when 'text :> IText> s : Result<IText option, TextError list> =
         if System.String.IsNullOrWhiteSpace s then None |> Ok
-        else Block.validate<'text, TextError> (s.Trim()) |> Result.map Some
-
-    /// Validates the given string into a Text block result
-    let check<'text when 'text :> IText> s =
-        match checkOptional<'text> s with
-        | Ok None -> Error [IsMissingOrBlank]
-        | Ok (Some s) -> Ok s | Error e -> Error e
-
-    /// Validates the given string into a Text block, raising an exception when validation fails
-    let ofUnchecked s =
-        match check s with
-        | Ok x -> x
-        | Error e -> sprintf "Attempt to access error Result: %A." e |> failwith
+        else Block.validate (s.Trim()) |> Result.map Some
 
 
 /// Single or multi-line text without any validation
@@ -67,16 +54,17 @@ type Tweet = private Tweet of FreeText with
 
 
 
-// Alternative type definition using operators for single validation condition
+// Alternative type definition using operators (for single condition)
 type FreeText' = private FreeText' of string with
     interface IText with
         member _.Validate =
-            System.String.IsNullOrWhiteSpace => IsMissingOrBlank
+            System.String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 
-// Alternative type definition using operators for multiple validation conditions
+// Alternative type definition using operators (for multiple conditions)
 type Tweet' = private Tweet' of FreeText with
-interface IText with
-    member _.Validate = !? [
-        (=) '\t' |> String.exists => ContainsTabs
-        String.length >> (>) 280 => ExceedsMaximumLength 280
-    ]
+    interface IText with
+        member _.Validate =
+            fun s -> !? [
+                s.Contains('\t')  => ContainsTabs
+                s.Length > 280    => ExceedsMaximumLength 280
+            ]

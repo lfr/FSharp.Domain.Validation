@@ -3,29 +3,25 @@
 
 open System.Text.Json
 open System.Text.Json.Serialization
+open FSharp.ValidationBlocks.Reflection
 
 module Serialization =
 
 
     type private ValidationBlockJsonConverter<'block> () =
         inherit JsonConverter<'block>()
-
-        let genericParameters (t:System.Type) =
-            t.GetInterfaces()
-            |> Array.find (fun i -> i.IsGenericType && i.GetGenericTypeDefinition() = typedefof<IBlock<_,_>>)
-            |> fun i -> i.GetGenericArguments() |> fun x -> x.[0], x.[1]
             
         override _.CanConvert t = typeof<'block>.IsAssignableFrom(t)
     
         override _.Read(reader, t, options) =            
-            let baseType, errorType = t |> genericParameters
-            let value = JsonSerializer.Deserialize(&reader, baseType, options)
-            let result = Block.runtimeWrap t errorType value
+            let bi = t |> blockInfo
+            let value = JsonSerializer.Deserialize(&reader, bi.BaseType, options)
+            let result = Runtime.validate t value
             result.Unbox()
             
         override _.Write (writer, value, options) =
-            let baseType, _ = value.GetType() |> genericParameters
-            JsonSerializer.Serialize(writer, value |> Block.unwrap, baseType, options)
+            let bi = value.GetType() |> blockInfo
+            JsonSerializer.Serialize(writer, value |> Block.unwrap, bi.BaseType, options)
 
 
     type ValidationBlockJsonConverterFactory() =
