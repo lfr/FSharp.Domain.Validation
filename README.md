@@ -69,7 +69,7 @@ type FreeText = private FreeText of string with
             // validation rule using validation operators
             String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
-To use validation operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/lfr/FSharp.ValidationBlocks/blob/master/src/Example/Text.fs) for more examples of validation operators.
+To use validation operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/src/Example/Text.fs) for more examples of validation operators.
 
 ### Creating and using blocks in your code
 
@@ -148,4 +148,4 @@ Using validation blocks you can create airtight domain objects guaranteed to nev
 Tweet [@fishyrock](https://twitter.com/fishyrock) to contribute or give feedback!
 
 ### Full working example
-You can find a full working example in the file [Text.fs](/lfr/FSharp.ValidationBlocks/blob/master/src/Example/Text.fs)
+You can find a full working example in the file [Text.fs](/src/Example/Text.fs)
