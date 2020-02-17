@@ -3,15 +3,13 @@
 # <img style="border-radius: 8%;" width="64" height="64" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/FSharp.ValidationBlocks.png"> <big>FSharp.ValidationBlocks</big>
 
 
-A tiny library with huge potential to simplify and streamline your domain design, as you can see from the examples below.
+A tiny library with huge potential to simplify and streamline your domain design, as you can see from the examples below:
 
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks</center> |
 |---|---|
 |<pre>// Single-case union style<br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (x:Tweet) =<br>     let (Tweet s) = x in s<br><br>// Object-oriented style<br>type Tweet private (s) =<br>   static member Validate s = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre>|<pre>type Tweet = private Tweet of Text with<br>   interface IText with<br>      member _.Validate =<br>         fun s → s.Length > 280 => IsTooLong 280</pre>|
 
-You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit when stating that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules <u>specific to the block itself</u>. One could imagine a similar behavior with OO-style types, but there's no simple way to achieve that while keeping constructors private.
-
-</center>
+You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit in the statement that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules <u>specific to the block itself</u>. One could imagine a similar behavior with OO-style types, but there's no simple way to achieve with private constructors.
 
 ## Interface? Really?
 
@@ -133,6 +131,14 @@ There's a `System.Text.Json.Serialization.JsonConverter` included, if you add it
 ## Not just strings
 
 Strings are the perfect example as it's usually the first type for which developers stitch together validation logic, but this library works with anything, you can create a `PositiveInt` that's guaranteed to be greater than zero, or a `FutureDate` that's guaranteed to not be in the past. Lists, vectors, any type of object really, if you can write a predicate against it, you can validate it. They're 100% generic so the sky is the limit.
+
+## Ok looks good, but I'm still not sure
+
+I've created a checklist to help the decision of using this library:
+
+&#x2705; My project contains domain objects or records
+
+If all of the above then this library is for you. It's tiny, doesn't have any dependencies, and uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Block.validate` and `Block.value` or just make their constructors public. Finally, if you use the provided JsonConverter, it ensures that your blocks are not serialized as ValidationBlocks, so you're not adding any indirect dependency between this library and whatever is on the other side of your serialization.
 
 ## Conclusion
 
