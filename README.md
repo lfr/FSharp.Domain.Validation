@@ -58,8 +58,8 @@ type FreeText = private FreeText of string with
                 [if s |> String.IsNullOrWhiteSpace then IsMissingOrBlank]
 ```
 
-### Using operators to further simplify type declarations
-The type declaration above can be simplified further using the provided `=>` and `==>` **validation operators** that here combine a predicate of `string` with the appropriate error.
+### Simpler validation rules with validation operators
+The type declaration above can be simplified further using the provided `=>` and `==>` operators that here combine a predicate of `string` with the appropriate error.
 
 ```fsharp
 /// Alternative type declaration using the ==> operator
@@ -69,18 +69,18 @@ type FreeText = private FreeText of string with
             // validation rule using validation operators
             String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
-To use operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/lfr/FSharp.ValidationBlocks/blob/master/src/Example/Text.fs) for more examples of validation operators.
+To use validation operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/lfr/FSharp.ValidationBlocks/blob/master/src/Example/Text.fs) for more examples of validation operators.
 
 ### Creating and using blocks in your code
 
-Using blocks is very easy, let's say you have a block binding called `email`, you can simply access its value using the following:
+Using validation blocks is very easy, let's say you have a block binding called `email`, you can simply access its value using the following:
 
 ```fsharp
 // get the primitive value from the block
 Block.value email // → string
 ```
 
-There's also an experimental operator `%` that essentially does the same thing:
+There's also an experimental operator `%` that essentially does the same thing. Note that this operator is *opened* automatically along with the namespace `FSharp.ValidationBlocks`, so to avoid operator pollution this is marked as experimental until the final operator characters are decided.
 
 ```fsharp
 // experimental — same as Block.value
@@ -135,7 +135,7 @@ Strings are the perfect example as it's usually the first type for which develop
 
 ## Ok looks good, but I'm still not sure
 
-I've created a checklist to help the decision of using this library:
+I've created a checklist to help you decide whether this library is a good match for your project:
 
 &#x2705; My project contains domain objects or records
 
