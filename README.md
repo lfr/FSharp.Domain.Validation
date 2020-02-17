@@ -18,7 +18,7 @@ F# is a multi-paradigm language. Regardless of whether you think it's a good thi
 * Identify a type as a ValidationBlock
 * Enforce the definition of validation rules
 
-There will otherwise be **no mentions** of interfaces in the code that uses and creates validation blocks, only when you declare the block in your domain definition file.
+There's no other mentions of interfaces in the code that uses or creates validation blocks, only when you declare the block in your domain definition file.
 
 ## How it works
 
@@ -59,7 +59,7 @@ type FreeText = private FreeText of string with
 ```
 
 ### Using operators to further simplify type declarations
-The type declaration above can be simplified further using the provided `=>` and `==>` **validation operators** that here combine a predicate of `string` with an error true.
+The type declaration above can be simplified further using the provided `=>` and `==>` **validation operators** that here combine a predicate of `string` with the appropriate error.
 
 ```fsharp
 /// Alternative type declaration using the ==> operator
