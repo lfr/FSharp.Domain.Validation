@@ -13,7 +13,7 @@ You may have noticed that the examples on the left have an additional validation
 
 ## Interface? Really?
 
-F# is a multi-paradigm language. Regardless of whether you think it's a good thing or a bad thing (it's both), with the right discipline certain OO concepts can be harnessed for their expressiveness without any of the baggage. For instance here we use `interface` as an elegant way to both:
+F# is a multi-paradigm language. Whether you think it's a good thing or a bad thing (it's both), with the right discipline certain OO concepts can be harnessed for their expressiveness without any of the baggage. For instance here we use `interface` as an elegant way to both:
 
 * Identify a type as a ValidationBlock
 * Enforce the definition of validation rules
@@ -73,7 +73,7 @@ To use validation operators make sure to open `FSharp.ValidationBlocks.Operators
 
 ### Creating and using blocks in your code
 
-Using validation blocks is very easy, let's say you have a block binding called `email`, you can simply access its value using the following:
+Using validation blocks is easy, let's say you have a block binding called `email`, you can simply access its value using the following:
 
 ```fsharp
 // get the primitive value from the block
