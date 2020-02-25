@@ -7,7 +7,7 @@ A tiny library with huge potential to simplify your domain design, as you can se
 
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks</center> |
 |---|---|
-|<pre><font color="olive">// Single-case union style</font><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (x:Tweet) =<br>     let (Tweet s) = x in s<br><br><font color="olive">// Object-oriented style</font><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre>|<pre>type Tweet = private Tweet of Text with<br>   interface IText with<br>      member _.Validate =<br>         fun s → s.Length > 280 => IsTooLong 280</pre>|
+|<pre>```diff// Single-case union style````<br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><font color="olive">// Object-oriented style</font><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre>|<pre>type Tweet = private Tweet of Text with<br>   interface IText with<br>      member _.Validate =<br>         fun s → s.Length > 280 => IsTooLong 280</pre>|
 
 You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit in the statement that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules <u>specific to the block itself</u>. One could imagine a similar behavior with OO-style types, but there's no simple way to achieve that with private constructors.
 
@@ -122,7 +122,7 @@ The `Block.validate` method returns a `Result`, which may not always be necessar
 // throws an exception if not valid
 Unchecked.blockof "this better be valid"         // → 'block
 // same as above without type inference
-Unchecked.blockof<Text> "this better be valid 2" // → Email
+Unchecked.blockof<Text> "this better be valid 2" // → Text
 ```
 
 ## Serialization
