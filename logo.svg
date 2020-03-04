@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -17,7 +18,29 @@
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="logo.svg">
   <defs
-     id="defs2" />
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient933-7">
+      <stop
+         style="stop-color:#5a8fb6;stop-opacity:1"
+         offset="0"
+         id="stop929" />
+      <stop
+         style="stop-color:#6dbbd7;stop-opacity:1"
+         offset="1"
+         id="stop931" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient933-7"
+       id="linearGradient939"
+       x1="272.52084"
+       y1="123.69791"
+       x2="55.5625"
+       y2="123.69791"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,8 +49,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="242.07026"
-     inkscape:cy="641.40012"
+     inkscape:cx="691.06091"
+     inkscape:cy="585.47086"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -48,7 +71,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,13 +80,49 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
+       style="fill:url(#linearGradient939);fill-opacity:1;stroke:none;stroke-width:0.98933095;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect959-9"
+       width="216.95831"
+       height="108.47917"
+       x="55.5625"
+       y="69.458328"
+       ry="0.033292662"
+       inkscape:export-filename="C:\Users\lfr\source\repos\FSharp.ValidationBlocks\logo\social.png"
+       inkscape:export-xdpi="95.620003"
+       inkscape:export-ydpi="95.620003" />
+    <rect
+       style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.61803007;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="rect959-0"
+       width="216.95836"
+       height="42.333332"
+       x="55.5625"
+       y="103.85417"
+       ry="0.012992259"
+       inkscape:export-filename="C:\Users\lfr\source\repos\FSharp.ValidationBlocks\logo\rectangle.png"
+       inkscape:export-xdpi="95.620003"
+       inkscape:export-ydpi="95.620003" />
+    <rect
        style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.273;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
        id="rect959"
        width="42.333332"
        height="42.333332"
        x="55.562504"
        y="103.85417"
-       ry="0.012992259" />
+       ry="0.012992259"
+       inkscape:export-filename="C:\Users\lfr\source\repos\FSharp.ValidationBlocks\logo\square.png"
+       inkscape:export-xdpi="95.620003"
+       inkscape:export-ydpi="95.620003" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="94.456245"
+       y="132.39136"
+       id="text871"><tspan
+         sodipodi:role="line"
+         id="tspan869"
+         x="94.456245"
+         y="132.39136"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332">alidation</tspan></text>
     <g
        transform="translate(13.229167,-56.885417)"
        id="g837-9">
@@ -240,7 +299,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(13.229167,-63.5)"
+       transform="translate(13.229167,-63.499997)"
        id="g837-5">
       <path
          sodipodi:nodetypes="ccccc"
@@ -283,5 +342,16 @@
          d="m 68.791667,183.22917 5.291666,2.64583 5.291667,-2.64583 -5.291667,-2.64584 z"
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#6dbbd7;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="191.14171"
+       y="132.20238"
+       id="text871-0"><tspan
+         sodipodi:role="line"
+         id="tspan869-0"
+         x="191.14171"
+         y="132.20238"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#6dbbd7;fill-opacity:1;stroke-width:0.26458332;">Blocks</tspan></text>
   </g>
 </svg>
