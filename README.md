@@ -139,9 +139,11 @@ I've created a checklist to help you decide whether this library is a good match
 
 - [x] My project contains domain objects/records
 
-If your project satisfies all of the above this library is for you. It doesn't have any dependencies and uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Block.validate` and `Block.value` or just make the single case constructors public.
+If your project satisfies all of the above this library is for you!
 
-In addition to all of the above, if you use the provided **JsonConverter**, your blocks will be serialized as their primitive type (i.e. string) and not as ValidationBlocks, so you're not adding any indirect dependency between this library and whatever is on the other side of your serialization.
+It dramatically reduces the amount of code necessary to make illegal states unrepresentable while being tiny and built only with `FSharp.Core`. It uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Block.validate` and `Block.value` or just make the single case constructors public.
+
+In addition to the above, if you use the provided **JsonConverter**, your blocks will be serialized as their primitive type (i.e. string) and not as ValidationBlocks, so you're not adding any indirect dependency between this library and whatever is on the other side of your serialization.
 
 ## Conclusion
 
