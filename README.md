@@ -137,7 +137,7 @@ Strings are the perfect example as it's usually the first type for which develop
 
 I've created a checklist to help you decide whether this library is a good match for your project:
 
-&#x2705; My project contains domain objects or records
+- [x] My project contains domain objects/records
 
 If all of the above then this library is for you. It's tiny, doesn't have any dependencies, and uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Block.validate` and `Block.value` or just make their constructors public. Finally, if you use the provided JsonConverter, it ensures that your blocks are not serialized as ValidationBlocks, so you're not adding any indirect dependency between this library and whatever is on the other side of your serialization.
 
