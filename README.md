@@ -1,4 +1,4 @@
-![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=appveyor&color=brightgreen&cacheSeconds=21600)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=appveyor&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
 
 # <img style="border-radius: 8%;" width="64" height="64" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/square.png"> <big>FSharp.ValidationBlocks</big>
 
