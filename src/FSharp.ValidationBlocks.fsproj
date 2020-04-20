@@ -6,21 +6,19 @@
     <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>0.9.5</Version>
+    <Version>0.9.6</Version>
     <Authors>Luis Ferrao</Authors>
     <Company />
     <Product>FSharp.ValidationBlocks</Product>
-    <Description>Designing with types with F# can lead to pretty verbose code, this package aims to reduce verbosity to an absolut minimum.</Description>
-    <Copyright>Copyright © 2019 Luis Ferrao</Copyright>
+    <Description>Designing with types requires a lot of code - this library fixes that</Description>
+    <Copyright>Copyright © 2020 Luis Ferrao</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lfr/FSharp.ValidationBlocks</PackageProjectUrl>
     <PackageTags>validation blocks fsharp ddd</PackageTags>
-    <PackageIcon>FSharp.ValidationBlocks.png</PackageIcon>
+    <PackageIcon>square.png</PackageIcon>
     <PackageIconUrl />
     <PackageId>FSharp.ValidationBlocks</PackageId>
     <PackageReleaseNotes>New public API</PackageReleaseNotes>
-    <AssemblyVersion>0.9.5.0</AssemblyVersion>
-    <FileVersion>0.9.5.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\FSharp.ValidationBlocks.png">
+    <None Include="..\logo\square.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

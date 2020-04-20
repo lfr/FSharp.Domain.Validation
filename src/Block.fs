@@ -88,33 +88,58 @@ module Block =
         src |> unwrap :?> 'baseType
 
 
-    [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
+    [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let ``return``<'baseType, 'error> (inp:'baseType) : IBlock<'baseType, 'error> =
         NoValidation<'baseType, 'error>.Block inp :> _
 
-    [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
+    [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let apply (f:IBlock<'baseType -> 'a, 'error>) (x:IBlock<'baseType,'error>) =
         value x |> value f |> ``return``<'a, 'error>    
     
     // Equality and comparison
-    [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
+    [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let equals<'baseType, 'e when 'baseType : equality>
         (left:IBlock<'baseType, 'e>) (right:IBlock<'baseType, 'e>) =
         value left = value right
     
-    [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
+    [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let differs t1 t2 = equals t1 t2 |> not
 
-    [<System.Obsolete("This function's potential need and final signature is still being investigated.")>]
+    [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let compareTo<'baseType, 'e when 'baseType :> System.IComparable<'baseType>>
         (left:IBlock<'baseType, 'e>) (right:IBlock<'baseType, 'e>) =
         (value left).CompareTo(value right)
 
+    module Utils =
+
+        // string normalization
+        let private ctrlChars =
+            [System.Char.MinValue .. System.Char.MaxValue]
+            |> List.map char
+            |> List.filter
+                (fun c -> System.Char.IsControl c || System.Char.IsWhiteSpace c)
+            |> List.distinct
+            |> List.toArray 
+
+        /// Removes leading and trailing whitespace/control characters as well as
+        /// any occurrences of the null (0x0000) character
+        let canonicalize (inp:'a) : 'a =
+            match box inp with
+            | :? string as s -> s.Trim(ctrlChars).Replace("\0","") |> unbox
+            | _ -> inp
+
 type Block<'a, 'e> private () = class end with
 
-    /// Creates a block from the given input if valid, otherwise returns an Error
-    static member validate<'block when 'block :> IBlock<'a,'e>> (inp:'a) : Result<'block, 'e list> =
+    /// Creates a block from the given input if valid, otherwise returns an Error (strings are NOT canonicalized),
+    /// use Block.verbatim when return type can be inferred, otherwise Block.verbatim<'block>
+    static member verbatim<'block when 'block :> IBlock<'a,'e>> (inp:'a) : Result<'block, 'e list> =
         Block.validateInternal<'block, 'a, 'e> inp
+
+    /// Main function to create blocks, creates a block from the given input if valid,
+    /// otherwise returns an Error, use Block.validate when return type can be
+    /// inferred, otherwise Block.validate<'block>
+    static member validate (inp:'a) : Result<'block, 'e list> =
+        Block.Utils.canonicalize inp |> Block<'a, 'e>.verbatim
 
 
 module Runtime =
@@ -123,8 +148,8 @@ module Runtime =
         (nameof Block.wrap, Flags.NonPublic ||| Flags.Static)
         |> typeof<Block.Module>.DeclaringType.GetMethod
 
-    /// Non-generic version of Block.validate, mostly meant for serialization
-    let validate (blockType:System.Type) (input:obj) : IBlockResult =
+    /// Non-generic version of Block.verbatim, mostly meant for serialization
+    let verbatim (blockType:System.Type) (input:obj) : IBlockResult =
         let bi = Reflection.blockInfo blockType
         let mi = wrapMi.MakeGenericMethod([|bi.ErrorType|])
         mi.Invoke(null, [|input; List.empty<UnionCaseInfo>; blockType|]) :?> _
@@ -132,7 +157,8 @@ module Runtime =
 
 type Unchecked<'a> private () = class end with
 
-    /// Creates a block from the given input if valid, otherwise throws an exception
+    /// Creates a block from the given input if valid, otherwise throws an exception,
+    /// use Unchecked.blockof when return type can be inferred, otherwise Unchecked.blockof<'block>
     static member blockof<'block when 'block :> IBlockOf<'a>> (inp:'a) : 'block =
-        let result = Runtime.validate typeof<'block> inp
+        let result = Runtime.verbatim typeof<'block> inp
         result.Unbox()

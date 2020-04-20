@@ -80,7 +80,7 @@ Using validation blocks is easy, let's say you have a block binding called `emai
 Block.value email // → string
 ```
 
-There's also an experimental operator `%` that essentially does the same thing. Note that this operator is *opened* automatically along with the namespace `FSharp.ValidationBlocks`, so to avoid operator pollution this is marked as experimental until the final operator characters are decided.
+There's also an experimental operator `%` that essentially does the same thing. Note that this operator is *opened* automatically along with the namespace `FSharp.ValidationBlocks`. To avoid operator pollution this is advertised as experimental until the final operator characters are decided.
 
 ```fsharp
 // experimental — same as Block.value
@@ -90,9 +90,11 @@ There's also an experimental operator `%` that essentially does the same thing. 
 Creating a block is just as simple:
 
 ```fsharp
-// create a block when block type can be inferred
+// create a block, canonicalizing (i.e. trimming) the input if it's a string
 Block.validate s // → Ok 'block | Error e
 ```
+
+`Block.validate` canonicalization consists of trimming both whitespace and control charcters, as well as removing ocurrences of the null character. While this should be the preferred way of creating blocks, it's possible to skip canonicalization by using `Block.verbatim` instead.
 
 When type inference isn't possible, specify block type using the generic parameter:
 

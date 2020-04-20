@@ -18,10 +18,11 @@ type IText = inherit IBlock<string, TextError>
 /// This is a good place to define IText-specific functions
 module Text =
 
-    /// Validates the given string treating null/blank as a valid result of None
-    let ofOptional<'text when 'text :> IText> s : Result<IText option, TextError list> =
-        if System.String.IsNullOrWhiteSpace s then None |> Ok
-        else Block.validate (s.Trim()) |> Result.map Some
+    /// Validates the given trimmed string treating null/blank as a valid result of None
+    /// Use: Block.optional<Tweet> "hello!" or Block.optional "hello!"
+    let optional<'block when 'block :> IText> s : Result<'block option, TextError list> =
+        if System.String.IsNullOrWhiteSpace s then Ok None
+        else Block.validate<'block> s |> Result.map Some
 
 
 /// Single or multi-line text without any validation

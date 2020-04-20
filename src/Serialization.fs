@@ -16,7 +16,7 @@ module Serialization =
         override _.Read(reader, t, options) =            
             let bi = t |> blockInfo
             let value = JsonSerializer.Deserialize(&reader, bi.BaseType, options)
-            let result = Runtime.validate t value
+            let result = Runtime.verbatim t value
             result.Unbox()
             
         override _.Write (writer, value, options) =
