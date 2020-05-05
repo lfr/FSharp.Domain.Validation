@@ -48,9 +48,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="595.29571"
-     inkscape:cy="440.54746"
+     inkscape:zoom="3.959798"
+     inkscape:cx="245.5572"
+     inkscape:cy="358.67808"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -355,16 +355,16 @@
          y="132.20238"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#6dbbd7;fill-opacity:1;stroke-width:0.26458332;">Blocks</tspan></text>
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.60276771;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.60126615;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
        id="rect959-0-0"
-       width="206.37502"
-       height="42.333332"
-       x="60.854168"
+       width="206.6396"
+       height="42.068745"
+       x="60.589584"
        y="177.9375"
-       ry="0.012992259"
+       ry="0.012911058"
        inkscape:export-filename="C:\Users\lfr\source\repos\FSharp.ValidationBlocks\logo\hd.png"
-       inkscape:export-xdpi="351.22"
-       inkscape:export-ydpi="351.22" />
+       inkscape:export-xdpi="368.76001"
+       inkscape:export-ydpi="368.76001" />
     <rect
        style="fill:#333333;fill-opacity:0;stroke:none;stroke-width:0.273;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers stroke fill"
        id="rect959-5"
@@ -388,7 +388,7 @@
          y="206.47469"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke-width:0.26458332;">alidation</tspan></text>
     <g
-       transform="translate(13.229158,17.197909)"
+       transform="translate(13.229162,17.197957)"
        id="g837-9-2">
       <path
          sodipodi:nodetypes="ccccc"
@@ -410,7 +410,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(7.9374982,19.843739)"
+       transform="translate(7.9375021,19.843787)"
        id="g837-2-3">
       <path
          sodipodi:nodetypes="ccccc"
@@ -432,7 +432,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(-7.9375018,17.197909)"
+       transform="translate(-7.9374972,17.197957)"
        id="g837-13-8">
       <path
          sodipodi:nodetypes="ccccc"
@@ -454,7 +454,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(-2.6458418,19.843749)"
+       transform="translate(-2.6458374,19.843797)"
        id="g837-1-2">
       <path
          sodipodi:nodetypes="ccccc"
@@ -476,7 +476,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(2.6458282,22.48958)"
+       transform="translate(2.6458324,22.489627)"
        id="g837-0-3">
       <path
          sodipodi:nodetypes="ccccc"
@@ -498,7 +498,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(-7.9375018,10.583329)"
+       transform="translate(-7.9374972,10.583379)"
        id="g837-12-1">
       <path
          sodipodi:nodetypes="ccccc"
@@ -520,7 +520,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(-7.9375018,3.9687399)"
+       transform="translate(-7.9374972,3.9687913)"
        id="g837-3-6">
       <path
          sodipodi:nodetypes="ccccc"
@@ -542,7 +542,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(13.229158,10.583329)"
+       transform="translate(13.229162,10.583379)"
        id="g837-5-6">
       <path
          sodipodi:nodetypes="ccccc"
@@ -564,7 +564,7 @@
          style="fill:#6dbbd7;fill-opacity:1;stroke:#000000;stroke-width:0.273;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
     </g>
     <g
-       transform="translate(13.229158,3.9687399)"
+       transform="translate(13.229162,3.9687913)"
        id="g837-02-8">
       <path
          sodipodi:nodetypes="ccccc"
@@ -587,7 +587,7 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#6dbbd7;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#5a8fb6;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
        x="191.14171"
        y="206.28571"
        id="text871-0-2"><tspan
@@ -595,6 +595,6 @@
          id="tspan869-0-0"
          x="191.14171"
          y="206.28571"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#6dbbd7;fill-opacity:1;stroke-width:0.26458332">Blocks</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#5a8fb6;fill-opacity:1;stroke-width:0.26458332;">Blocks</tspan></text>
   </g>
 </svg>
