@@ -1,6 +1,6 @@
 [![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=appveyor&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
 
-<img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/rectangle.png">
+<img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
 
 
 A tiny library with huge potential to simplify your domain design, as you can see from the examples below:
