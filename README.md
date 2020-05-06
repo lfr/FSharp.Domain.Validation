@@ -3,7 +3,7 @@
 <img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
 
 
-A tiny library with huge potential to simplify your domain design, as you can see from the examples below:
+A tiny F# library with huge potential to simplify your domain design, as you can see from the examples below:
 
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks</center> |
 |---|---|
