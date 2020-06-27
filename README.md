@@ -1,9 +1,9 @@
 [![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=appveyor&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
 
-# <img style="border-radius: 8%;" width="64" height="64" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/square.png"> <big>FSharp.ValidationBlocks</big>
+<img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
 
 
-A tiny library with huge potential to simplify your domain design, as you can see from the examples below:
+A tiny F# library with huge potential to simplify your domain design, as you can see from the examples below:
 
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks</center> |
 |---|---|
@@ -151,7 +151,7 @@ In addition to the above, if you use the provided **JsonConverter**, your blocks
 
 Using validation blocks you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain code files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
 
-Tweet [@lastIuis](https://twitter.com/lastIuis) to give feedback!
+Tweet [@luislikeIuis](https://twitter.com/luislikeIuis) to give feedback!
 
 ### Full working example
 You can find a full working example in the file [Text.fs](/src/Example/Text.fs)
