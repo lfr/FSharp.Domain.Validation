@@ -36,6 +36,6 @@ module Serialization =
         override _.CanConvert t =
             t |> typeof<IBlock>.IsAssignableFrom && t |> implementsIBlock
                 
-        override x.CreateConverter (t, _) =
+        override _.CreateConverter (t, _) =
             let converterType = typedef.MakeGenericType([|t|])
             System.Activator.CreateInstance converterType :?> JsonConverter
