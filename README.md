@@ -1,4 +1,4 @@
-[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=appveyor&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
 [![twitter](https://img.shields.io/twitter/follow/LuisLikeIewis?label=Follow%20%40IuisIikeIewis&style=social)](http://twitter.com/intent/user?screen_name=LuisLikeIewis) 
 
 <img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
