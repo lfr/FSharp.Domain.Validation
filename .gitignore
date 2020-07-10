@@ -351,3 +351,6 @@ MigrationBackup/
 
 .fake
 .ionide
+
+# Custom
+src/Properties

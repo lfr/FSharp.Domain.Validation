@@ -61,13 +61,13 @@ type Tweet = private Tweet of FreeText with
 
 
 
-// Alternative type definition using operators (for single condition)
+// Alternative type definition using composing operator and a single condition
 type FreeText' = private FreeText' of string with
     interface TextBlock with
         member _.Validate =
             System.String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 
-// Alternative type definition using operators (for multiple conditions)
+// Alternative type definition using non-composing operators and multiple conditions
 type Tweet' = private Tweet' of FreeText with
     interface TextBlock with
         member _.Validate =
