@@ -152,7 +152,5 @@ In addition to the above, if you use the provided **JsonConverter**, your blocks
 
 Using validation blocks you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain code files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
 
-Tweet [@luislikeIuis](https://twitter.com/luislikeIuis) to give feedback!
-
 ### Full working example
 You can find a full working example in the file [Text.fs](/src/Example/Text.fs)
