@@ -1,6 +1,6 @@
-## FSharp.ValidationBlocks demos
+## Demos
 
-The links below contain demos of [FSharp.ValidationBlocks](https://github.com/lfr/FSharp.ValidationBlocks) in action.
+The links below contain demos of validation blocks in action!
 
 ### Links
 
