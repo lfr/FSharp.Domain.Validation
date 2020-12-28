@@ -54,7 +54,7 @@ The  validation rule is a function of the primitive type (`string` here) that re
 type FreeText = private FreeText of string with
     interface TextBlock with
         member _.Validate =
-            // validation rule
+            // validation ruleᵴ (only one)
             fun s ->
                 [if s |> String.IsNullOrWhiteSpace then IsMissingOrBlank]
 ```
@@ -67,7 +67,7 @@ The type declaration above can be simplified further using the provided `=>` and
 type FreeText = private FreeText of string with
     interface TextBlock with
         member _.Validate =
-            // validation rule using validation operators
+            // same validation rule using validation operators
             String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
 To use validation operators make sure to open `FSharp.ValidationBlocks.Operators` in the file(s) where you declare your ValidationBlocks. See [Text.fs](/src/Example/Text.fs#L57) for more examples of validation operators.

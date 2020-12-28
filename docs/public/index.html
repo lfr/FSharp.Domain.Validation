@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Fable</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="fable.ico" />
+    <style>
+        input { font-size: .8rem; height: 1rem; width: 12rem }
+        .notes {font-size: smaller; }
+        table { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <p>Fable is running with <a href="https://github.com/lfr/FSharp.ValidationBlocks" target="_blank">FSharp.ValidationBlocks</a>.</p>
+    <p>You can click on the button to validate the text below:</p>
+    <div>
+        <textarea id="inp" readonly>my
+text</textarea>
+    </div>
+    <button class="my-button">Validate</button>
+    <table>
+        <tr>
+            <td>Validation as <b>Text</b>¹</td>
+            <td>Validation as <b>FreeText</b></td>
+        </tr>
+        <tr>
+            <td><input id="textResultBox" type="text" value="click to see result" /></td>
+            <td><input id="freeTextResultBox" type="text" multiple value="click to see result" /></td>
+        </tr>
+    </table>
+    <p class="notes">
+        ¹ defined as a single line of text
+    </p>
+    <script src="bundle.js"></script>
+</body>
+</html>
