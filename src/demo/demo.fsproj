@@ -30,9 +30,7 @@
   <ItemGroup>
     <PackageReference Include="Fable.Browser.Dom" Version="2.2.0" />
     <PackageReference Include="Fable.Core" Version="3.2.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj" />
+    <PackageReference Include="FSharp.ValidationBlocks.Fable" Version="0.9.72-alpha" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="5.0.0" />
