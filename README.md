@@ -1,16 +1,26 @@
-[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=nuget:FSharp.ValidationBlocks)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=nuget:FSharp.ValidationBlocks.Fable)](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)
 <!-- [![twitter](https://img.shields.io/twitter/follow/LuisLikeIewis?label=Follow%20%40IuisIikeIewis&style=social)](http://twitter.com/intent/user?screen_name=LuisLikeIewis)  -->
 
-<img style="border-radius: 8%;" width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
+|<small><sub><sup>⚠&nbsp;</sup></sub></small>ꜰᴀʙʟᴇ<small><sub><sup>&nbsp;⚠</sup></sub></small>|For Fable projects please use the package <u>and the namespace</u> [`FSharp.ValidationBlocks.Fable`](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)|
+:---: | :---
 
+<br>
+
+<p>
+    <img width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
+</p>
 
 A tiny F# library with huge potential to simplify your domain design, as you can see from the examples below:
 <a name="anchor">
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks<a name="anchor2" /></center> |
 |---|---|
-|<pre><a href="#anchor"><img src="assets/style-single-case.svg" alt="// Single-case union style" width="100%" /></a><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><a href="#anchor"><img src="assets/style-oo.svg" alt="// Object-oriented style" width="100%" /></a><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre><a href="#anchor2"><img src="assets/scroll.svg" width="80%" /></a>|<pre>type Tweet = private Tweet of Text with<br>   interface TextBlock with<br>      member _.Validate =<br>         fun s -> s.Length > 280 => IsTooLong 280</pre>|
+|<pre><a href="#anchor"><img src="assets/style-single-case.svg" alt="// Single-case union style" width="100%" /></a><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><a href="#anchor"><img src="assets/style-oo.svg" alt="// Object-oriented style" width="100%" /></a><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre><a href="#anchor2"><img src="assets/scroll.svg" width="80%" /></a>|<pre>type Tweet = private Tweet of Text with<br>   interface TextBlock with<br>      member _.Validate =<br>         fun s -> s.Length > 280 => IsTooLong 280</pre><!--<p><center><small>➡&nbsp;</small>[See it in action](docs/fable.html)</center></p>-->|
 
-You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit in the statement that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules <u>specific to the block itself</u>. One could imagine a similar behavior with OO-style types, but there's no simple way to achieve that with private constructors.
+You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit in the statement that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules specific to the block itself!
+
+
+
 
 ## Interface? Really?
 
@@ -23,7 +33,11 @@ There's no other mentions of interfaces in the code that uses or creates validat
 
 ## How it works
 
-First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions.
+First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions. These 3 simple steps are enough to ensure <u>at compilation time</u> that all your domain is always **always** valid!
+
+<p align="center">
+    <a href="docs/fable.html" target="_blank"><img src="assets/demo.gif" alt="demo"></a>
+</p>
 
 ### Declaring your errors
 

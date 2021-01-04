@@ -22,7 +22,7 @@ let main argv =
 
     // check serialized
     let serialized = JsonSerializer.Serialize(sb, options)
-    printfn "%s: %A = %A" msg serialized (s |> Block.Utils.canonicalize |> JsonSerializer.Serialize)
+    printfn "%s: %A = %A" msg serialized (s |> Utils.canonicalize |> JsonSerializer.Serialize)
     
     // check deserialized
     let deserialized =

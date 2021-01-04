@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+textarea {
+    --margin: 0.2rem;
+    margin: var(--margin);
+    width: calc(100% - 2 * var(--margin));
+    display: blocK;
+    box-sizing: border-box;
+    resize: none;
+    background: Yellow;
+}
+
+table {
+    font-family: "Consolas", "Courier New", monospace;
+    min-width: 40rem;
+}
+
+th {
+    background: Silver;
+    color: White;
+}
+
+td {
+    font-size: smaller;
+    color: white;
+    background: black;
+}
+
+tbody tr td:first-child {
+    width: 20rem;
+}
+
+tbody tr td:last-child {
+    color: green;
+}
+
+.comment {
+    color: Green;
+}
+
+.type {
+    color: #0cc;
+}
+
+.keyword {
+    color: #47d;
+}
+
+.symbol {
+    color: Magenta;
+}
+
+.result {
+    color: yellow;
+}

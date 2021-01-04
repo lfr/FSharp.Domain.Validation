@@ -12,15 +12,17 @@ type __ = interface end
 module Block =
 
     // we'll use this to safely get the name of the validate method
-    let private __ = {new IBlock<int,int> with member _.Validate = fun _ -> []}
+    let private __ = {new IBlock<_,_> with member _.Validate = fun _ -> []}
 
-    // TODO: get rid of this as soon as this is upgraded to net5.0
-    let private ``nameof __.Validate`` = "Validate"
-
-    let internal ``nameof Block<_,_>.wrap`` = "wrap"
+    // TODO: get rid of this as soon as proper nameof is supported
+    [<System.Obsolete("This is for internal use.")>]
+    module _nameof =
+        let Validate = "Validate"
+        let wrap = "wrap"
+        let iblock = typedefof<IBlock<_,_>>.Name
 
     /// Returns true if an object is a block
-    let isBlock (inp:obj) = inp?(``nameof __.Validate``) <> None
+    let isBlock (inp:obj) = inp?(_nameof.Validate) <> None
 
     let rec value (src:'block when 'block :> IBlock<'baseType,'error>) : 'baseType =
 
@@ -29,10 +31,10 @@ module Block =
 
         match src?fields with
 
-        // union case has only one field and it has no inner fields
+        // union case has only one field that has no inner fields
         | Some x when x?(1) = None && not<|isBlock x?(0) -> x?(0) |> unbox
 
-        // union case has only one field and it does have inner fields
+        // union case has only one field that does have inner fields
         | Some x when x?(1) = None -> x?(0) |> value
 
         // union case has more than one field
@@ -94,7 +96,7 @@ type Unchecked<'a> private () = class end with
 
     /// Creates a block from the given input if valid, otherwise throws an exception,
     /// use Unchecked.blockof when return type can be inferred, otherwise Unchecked.blockof<'block>
-    [<System.Obsolete("This is not currently supported in Fable", true)>]
+    [<System.Obsolete("This is not currently supported in Fable (issue #2321).", true)>]
     // Missing reflection support:
     // 🔲 Type.GetInterface
     // ✅ Type.MakeGenericType
@@ -103,17 +105,18 @@ type Unchecked<'a> private () = class end with
     // ✅ Type.GetGenericTypeDefinition
     // 🔲 Type.GetMethods
     // 🔲 MethodBase.Invoke
+    // https://github.com/fable-compiler/Fable/issues/2321
     static member inline blockof<'block when 'block :> IBlockOf<'a>> (inp:'a) =
 
         let errorType =
             typeof<'block>
-                .GetInterface(typedefof<IBlock<_,_>>.Name)
+                .GetInterface(_nameof.iblock)
                 .GetGenericArguments().[1] // 0 is base type, 1 is error type
         
         let wrapMi =
             typedefof<Block<_,_>>
                 .MakeGenericType(typeof<'a>, errorType)
-                .GetMethod(``nameof Block<_,_>.wrap``,
+                .GetMethod(_nameof.wrap,
                     BindingFlags.Static ||| BindingFlags.Public)
 
         wrapMi.Invoke(null, [|box inp|])

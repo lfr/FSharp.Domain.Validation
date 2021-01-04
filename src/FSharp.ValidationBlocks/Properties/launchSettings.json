@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FSharp.ValidationBlocks": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Key": "Value"
+      }
+    }
+  }
+}

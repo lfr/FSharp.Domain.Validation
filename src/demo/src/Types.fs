@@ -1,13 +1,15 @@
 ﻿[<AutoOpen>]
 module Types
 
-open FSharp.ValidationBlocks
+open FSharp.ValidationBlocks.Fable
 open FSharp.ValidationBlocks.Utils
+open System
 
 /// Define all the possible errors that the blocks can yield
 type TextError =
     | ``Contains control characters``
     | ``Is missing or blank``
+    | ``Is not a valid integer``
 
 /// This interface in not strictly necessary but it makes type declarations
 /// and function signatures a lot more readable
@@ -17,9 +19,8 @@ type TextBlock = inherit IBlock<string, TextError>
 type FreeText = private FreeText of string with
     interface TextBlock with
         member _.Validate =
-            // System.String.IsNullOrWhiteSpace => IsMissingOrBlank
             fun s ->
-                [if s |> System.String.IsNullOrWhiteSpace then ``Is missing or blank``]
+                [if s |> String.IsNullOrWhiteSpace then ``Is missing or blank``]
                             
 /// Single line of text (no control characters)
 type Text = private Text of FreeText with
@@ -27,6 +28,16 @@ type Text = private Text of FreeText with
         member _.Validate =
             fun s ->
                 [if containsControlCharacters s then ``Contains control characters``]
+
+/// String representation of an integer
+type Integer = private Integer of FreeText with
+    interface TextBlock with
+        member _.Validate =
+            fun s ->
+                match Int32.TryParse(s) with
+                | false, _ when not<|String.IsNullOrWhiteSpace s ->
+                    [``Is not a valid integer``]
+                | _ -> []
 
 
 

@@ -3,9 +3,13 @@
 open Microsoft.FSharp.Reflection
 open FSharp.ValidationBlocks.Reflection
 
+//#if FABLE_COMPILER
+//[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.", true)>]
+//#endif
 module Block =
 
-    type Module = interface end
+    type Module = interface end    
+    
     // This enables invoking instance methods on null instances
     let private genericDelegate =
         typedefof<System.Func<_>>.MakeGenericType([|typeof<obj>|])        
@@ -14,9 +18,7 @@ module Block =
         System.Delegate
             .CreateDelegate(genericDelegate, null, mi).DynamicInvoke()
         |> fun x -> x, x.GetType().GetMethod("Invoke")
-    let private validate value blockType =
-        let mi, nullDelegate = nullDelegate blockType
-        nullDelegate.Invoke(mi, [|value|]) :?> 'e list
+
 
     /// Extracts a value from the block
     let rec internal unwrap (x:obj) =
@@ -34,16 +36,20 @@ module Block =
 
     /// Tail recursive validation of the top block along with the other blocks it's built upon
     let rec internal wrap<'e>
-        (src:obj, rollingCtor:(UnionCaseInfo * System.Type) list)
+        (src:obj, rollingCtor:UnionCaseInfo list)
         (blockType:System.Type) : Result<'e> =
 
         let isPrimitive (pi:System.Reflection.PropertyInfo) =
-            pi.PropertyType = typeof<string> |> not
+            pi.PropertyType |> typeof<IBlock>.IsAssignableFrom |> not
 
-        let folder (state:Result<'e>) (uci:UnionCaseInfo, blockType:System.Type) =
+        let validate (value:obj) blockType =
+            let mi, nullDelegate = nullDelegate blockType
+            nullDelegate.Invoke(mi, [|value|]) :?> 'e list
+
+        let folder (state:Result<'e>) (uci:UnionCaseInfo) =
             if state.IsOk then
                 let newValue = FSharpValue.MakeUnion(uci, [|state.Value|], true)
-                let errors = validate src blockType
+                let errors = validate src uci.DeclaringType
                 Result<'e>(newValue, errors)
             else state
 
@@ -52,20 +58,20 @@ module Block =
             match uci.GetFields() with
 
             | [|pi|] when pi |> isPrimitive ->
-                (uci, blockType)::rollingCtor
+                uci::rollingCtor
                 |> List.fold folder (Result<'e>(src, []))
 
             | [|pi|] ->
-                wrap<'e> (src, (uci, blockType) :: rollingCtor) pi.PropertyType
+                wrap<'e> (src, uci :: rollingCtor) pi.PropertyType
 
             | x -> sprintf "Expected a single-field union case, but %s contains %i fields." uci.Name x.Length |> failwith
         | x -> sprintf "Expected a single-case union, but %s contains %i cases." blockType.Name x.Length |> failwith
 
 
     /// Internal validation method, just a wrapper with some type checks, not meant to be used outside of this library
-    let inline internal validateInternal<'block, 'a, 'err when 'block :> IBlock<'a,'err>> (blockType:System.Type) (src:'a) : Result<'block, 'err list> =
+    let internal validateInternal<'block, 'a, 'err when 'block :> IBlock<'a,'err>> (src:'a) : Result<'block, 'err list> =
 
-        let t = blockType
+        let t = typeof<'block>
 
         // ideally this would be a type constraint on 'block, but sum type constrains don't exist yet
         let typeConstraintError =
@@ -81,8 +87,9 @@ module Block =
         result.ToResult<'block>()
     
     /// This is the primary way to get a value out of a block
-    let value (src:IBlock<'baseType,'error>) =
+    let rec value (src:IBlock<'baseType,'error>) =
         src |> unwrap :?> 'baseType
+
 
     [<System.Obsolete("This function's existence and final signature are still being investigated.")>]
     let ``return``<'baseType, 'error> (inp:'baseType) : IBlock<'baseType, 'error> =
@@ -111,7 +118,7 @@ type Block<'a, 'e> private () = class end with
     /// Creates a block from the given input if valid, otherwise returns an Error (strings are NOT canonicalized),
     /// use Block.verbatim when return type can be inferred, otherwise Block.verbatim<'block>
     static member verbatim<'block when 'block :> IBlock<'a,'e>> (inp:'a) : Result<'block, 'e list> =
-        Block.validateInternal<'block, 'a, 'e> typeof<'block> inp
+        Block.validateInternal<'block, 'a, 'e> inp
 
     /// Main function to create blocks, creates a block from the given input if valid,
     /// otherwise returns an Error, use Block.validate when return type can be
@@ -119,13 +126,11 @@ type Block<'a, 'e> private () = class end with
     static member validate (inp:'a) : Result<'block, 'e list> =
         Utils.canonicalize inp typeof<'a> |> Block<'a, 'e>.verbatim
 
-module Runtime =
 
-    // Fable does not support nameof
-    let private ``nameof Block.wrap`` = "wrap"
+module Runtime =
     
     let private wrapMi =
-        (``nameof Block.wrap``, Flags.NonPublic ||| Flags.Static)
+        (nameof Block.wrap, Flags.NonPublic ||| Flags.Static)
         |> typeof<Block.Module>.DeclaringType.GetMethod
 
     /// Non-generic version of Block.verbatim, mostly meant for serialization

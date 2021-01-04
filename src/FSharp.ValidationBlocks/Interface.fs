@@ -2,6 +2,10 @@
 
 type IBlock = interface end
 type IBlockOf<'baseType> = inherit IBlock
+
+//#if FABLE_COMPILER
+//[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.", true)>]
+//#endif
 type IBlock<'baseType, 'error> =
     inherit IBlockOf<'baseType>
     abstract member Validate: ('baseType -> 'error list)

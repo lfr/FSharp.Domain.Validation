@@ -3,7 +3,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>preview</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>0.9.7</Version>
@@ -11,17 +10,17 @@
     <Company />
     <Product>FSharp.ValidationBlocks</Product>
     <Description>Designing with types requires a lot of code - this library fixes that</Description>
-    <Copyright>Copyright © 2020 Luis Ferrao</Copyright>
+    <Copyright>Copyright © 2021 Luis Ferrao</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lfr/FSharp.ValidationBlocks</PackageProjectUrl>
     <PackageTags>validation blocks fsharp ddd</PackageTags>
     <PackageIcon>square.png</PackageIcon>
     <PackageIconUrl />
     <PackageId>FSharp.ValidationBlocks</PackageId>
-    <PackageReleaseNotes>New public API</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Utils.fs" />
     <Compile Include="InternalResult.fs" />
     <Compile Include="Interface.fs" />
     <Compile Include="Reflection.fs" />
@@ -33,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\logo\square.png">
+    <None Include="..\..\logo\square.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
