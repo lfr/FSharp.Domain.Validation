@@ -24,20 +24,21 @@ textarea {
 
 table {
     font-family: "Consolas", "Courier New", monospace;
-    min-width: 40rem;
+    font-size: smaller;
 }
 
 div {
     font-family: monospace;
     text-align: right;
     color: Gray;
+    font-size: smaller;
 }
 
 th {
     background: Gray;
     color: gainsboro;
     font-weight: normal;
-    font-size:smaller;
+    font-size: smaller;
     padding: .2rem;
 }
 
@@ -48,7 +49,7 @@ td {
 }
 
 tbody tr td:first-child {
-    width: 20rem;
+    width: 12.6rem;
 }
 
 tbody tr td:last-child {
