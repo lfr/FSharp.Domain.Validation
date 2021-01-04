@@ -36,7 +36,7 @@ There's no other mentions of interfaces in the code that uses or creates validat
 First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions. These 3 simple steps are enough to ensure <u>at compilation time</u> that all your domain is always **always** valid!
 
 <p align="center">
-    <a href="docs/fable.html" target="_blank"><img src="assets/demo.gif" alt="demo"></a>
+    <a href="https://impure.fun/FSharp.ValidationBlocks/fable.html"><img src="assets/demo.gif" alt="demo">]</a>
 </p>
 
 ### Declaring your errors
