@@ -16,6 +16,7 @@
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="public\style.css" />
+    <None Include="Nuget.Config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Procfile" />
