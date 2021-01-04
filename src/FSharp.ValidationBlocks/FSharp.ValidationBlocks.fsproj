@@ -5,7 +5,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.72-alpha</Version>
+		<Version>0.9.72</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
 		<Product>FSharp.ValidationBlocks</Product>
@@ -17,6 +17,10 @@
 		<PackageIcon>square.png</PackageIcon>
 		<PackageIconUrl />
 		<PackageId>FSharp.ValidationBlocks</PackageId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <OutputPath>..\.package-bin\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>

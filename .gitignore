@@ -354,3 +354,4 @@ MigrationBackup/
 
 # Custom
 src/Properties
+.package-bin/

@@ -9,7 +9,7 @@ table {
 }
 
 textarea {
-    --margin: 0.2rem;
+    --margin: 0rem;
     margin: var(--margin);
     width: calc(100% - 2 * var(--margin));
     display: blocK;
@@ -23,9 +23,18 @@ table {
     min-width: 40rem;
 }
 
+div {
+    font-family: monospace;
+    text-align: right;
+    color: Gray;
+}
+
 th {
-    background: Silver;
-    color: White;
+    background: Gray;
+    color: gainsboro;
+    font-weight: normal;
+    font-size:smaller;
+    padding: .2rem;
 }
 
 td {

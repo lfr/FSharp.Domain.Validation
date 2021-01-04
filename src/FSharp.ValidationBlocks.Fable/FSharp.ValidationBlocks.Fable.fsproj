@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.72-alpha</Version>
+		<Version>0.9.72</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
 		<Product>FSharp.ValidationBlocks.Fable</Product>
@@ -20,8 +20,9 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <DefineConstants>TRACE;FABLE_COMPILER;</DefineConstants>
-	  <Optimize>false</Optimize>
-	  <Tailcalls>false</Tailcalls>
+	  <Optimize>true</Optimize>
+	  <Tailcalls>true</Tailcalls>
+	  <OutputPath>..\.package-bin\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
