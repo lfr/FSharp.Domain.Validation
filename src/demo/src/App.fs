@@ -14,13 +14,13 @@ let result3 = document.querySelector("#resultBox3") :?> Browser.Types.HTMLSpanEl
 box.oninput <- fun _ ->
 
     result1.textContent <-
-        validate<Text> box.value
+        Block.validate<Text> box.value
         |> Result.text
 
     result2.textContent <-
-        validate<FreeText> box.value
+        Block.validate<FreeText> box.value
         |> Result.text
 
     result3.textContent <-
-        validate<Integer> box.value
+        Block.validate<Integer> box.value
         |> Result.text
