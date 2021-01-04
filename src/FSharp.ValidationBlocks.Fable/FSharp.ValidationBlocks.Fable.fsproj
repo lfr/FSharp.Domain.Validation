@@ -18,6 +18,12 @@
 		<PackageId>FSharp.ValidationBlocks.Fable</PackageId>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DefineConstants>TRACE;FABLE_COMPILER;</DefineConstants>
+	  <Optimize>false</Optimize>
+	  <Tailcalls>false</Tailcalls>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<Compile Include="Types.fs" />
 		<Compile Include="Block.fs" />
