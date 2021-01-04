@@ -1,7 +1,7 @@
 ﻿module App
 
 open FSharp.ValidationBlocks.Fable
-open type FSharp.ValidationBlocks.Fable.Block<string, TextError>
+//open type FSharp.ValidationBlocks.Fable.Block<string, TextError>
 open Browser.Dom
 
 // Get bindings for the text area and 3 result contains
