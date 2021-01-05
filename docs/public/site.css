@@ -26,6 +26,7 @@ object {
 @media (min-width: 48em) {
    object {width: 80%;}
    body {width: 80%;}
+   h1, h2, h3, h4, h5, h6 {text-align: center;}   
 }
 
 h1, h2, h3, h4, h5, h6 {
