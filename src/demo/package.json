@@ -5,7 +5,7 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "postinstall": "webpack -p",
+    "build": "webpack -p",
     "start": "node server.js",
     "dev": "webpack-dev-server"
   },
