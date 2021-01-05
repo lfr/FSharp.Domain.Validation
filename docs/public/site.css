@@ -45,3 +45,7 @@ a:hover {
     text-align: center;
     font-size: smaller;
 }
+
+.footer a {
+    color: gray;
+}
