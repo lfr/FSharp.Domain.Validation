@@ -78,4 +78,9 @@ tbody tr td:last-child {
 
 a {
     color: gray;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
