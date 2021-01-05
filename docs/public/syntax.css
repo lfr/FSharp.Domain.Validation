@@ -46,7 +46,7 @@
 .highlight .sb { color: #c30 } /* Literal.String.Backtick */
 .highlight .sc { color: #c30 } /* Literal.String.Char */
 .highlight .sd { color: #c30; font-style: italic } /* Literal.String.Doc */
-.highlight .s2 { color: #c30 } /* Literal.String.Double */
+.highlight .s2 { color: green } /* Literal.String.Double */
 .highlight .se { color: #c30; } /* Literal.String.Escape */
 .highlight .sh { color: #c30 } /* Literal.String.Heredoc */
 .highlight .si { color: #a00 } /* Literal.String.Interpol */
