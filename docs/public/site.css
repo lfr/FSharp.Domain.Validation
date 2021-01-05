@@ -23,17 +23,18 @@ object {
    text-align: center;
 }
 
-@media (min-width: 48em) {
-   object {width: 80%;}
-   body {width: 80%;}
-   h1, h2, h3, h4, h5, h6 {text-align: center;}   
-}
-
 h1, h2, h3, h4, h5, h6 {
    font-weight: normal;
    padding-bottom: .5rem;
    border-bottom: 1px solid #555;
    margin-bottom: 1rem;
+   text-align: center;
+}
+
+@media (min-width: 48em) {
+   object {width: 80%;}
+   body {width: 80%;}
+   h1, h2, h3, h4, h5, h6 {text-align: left;}   
 }
 
 a {
