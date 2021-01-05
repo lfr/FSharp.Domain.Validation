@@ -61,3 +61,12 @@ pre.highlight {
     border: 1px solid black;
     padding: .5rem;
 }
+
+code.language-plaintext {
+    background: #222;
+    border: 1px solid black;
+    padding: 1px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 6px;
+    padding: .2rem .4rem;
+}

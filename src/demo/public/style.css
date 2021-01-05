@@ -37,7 +37,7 @@ div {
 }
 
 th {
-    background: Gray;
+    background: gray;
     color: gainsboro;
     font-weight: normal;
     font-size: smaller;
@@ -54,11 +54,11 @@ tbody tr td:first-child {
 }
 
 tbody tr td:last-child {
-    color: green;
+    color: limegreen;
 }
 
 .comment {
-    color: Green;
+    color: limegreen;
 }
 
 .type {
@@ -66,11 +66,11 @@ tbody tr td:last-child {
 }
 
 .keyword {
-    color: #47d;
+    color: cornflowerblue;
 }
 
 .symbol {
-    color: Magenta;
+    color: #f6f; /* lighter magenta */
 }
 
 .result {
