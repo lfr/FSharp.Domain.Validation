@@ -15,7 +15,7 @@ A tiny F# library with huge potential to simplify your domain design, as you can
 <a name="anchor">
 | <center>Without ValidationBlocks</center> | <center>With ValidationBlocks<a name="anchor2" /></center> |
 |---|---|
-|<pre><a href="#anchor"><img src="assets/style-single-case.svg" alt="// Single-case union style" width="100%" /></a><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><a href="#anchor"><img src="assets/style-oo.svg" alt="// Object-oriented style" width="100%" /></a><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre><a href="#anchor2"><img src="assets/scroll.svg" width="80%" /></a>|<pre>type Tweet = private Tweet of Text with<br>   interface TextBlock with<br>      member _.Validate =<br>         fun s -> s.Length > 280 => IsTooLong 280</pre><!--<p><center><small>➡&nbsp;</small>[See it in action](docs/fable.html)</center></p>-->|
+|<pre><a href="#anchor"><img src="assets/style-single-case.svg" alt="// Single-case union style" width="100%" /></a><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><a href="#anchor"><img src="assets/style-oo.svg" alt="// Object-oriented style" width="100%" /></a><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre><a href="#anchor2"><img src="assets/scroll.svg" width="80%" /></a>|<pre>type Tweet = private Tweet of Text with<br>   interface TextBlock with<br>      member _.Validate =<br>         fun s -> s.Length > 280 => IsTooLong 280</pre><!--<p><center><small>➡&nbsp;</small>[See it in action](https://impure.fun/FSharp.ValidationBlocks/demo/)</center></p>-->|
 
 You may have noticed that the examples on the left have an additional validation case. On the right this validation is implicit in the statement that a `Tweet` is a `Tweet of Text`. Since validation blocks are built on top of each other, the only rules that need to be explicitly declared are the rules specific to the block itself!
 
@@ -36,7 +36,9 @@ There's no other mentions of interfaces in the code that uses or creates validat
 First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions. These 3 simple steps are enough to ensure at compilation time that all your domain is always **always** valid!
 
 <p align="center">
-    <a href="https://impure.fun/FSharp.ValidationBlocks/demo.html"><img src="assets/demo.gif" alt="demo">]</a>
+    <a href="https://impure.fun/FSharp.ValidationBlocks/demo/">
+        <img src="assets/demo.gif" alt="demo" />
+    </a>
 </p>
 
 ### Declaring your errors
