@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "./node_modules/webpack/bin/webpack.js -p && node server.js",
+    "postinstall": "webpack",
+    "start": "node server.js",
     "dev": "webpack-dev-server"
   },
   "dependencies": {
