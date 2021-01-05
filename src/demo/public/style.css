@@ -75,3 +75,7 @@ tbody tr td:last-child {
 .result {
     color: yellow;
 }
+
+a {
+    color: gray;
+}
