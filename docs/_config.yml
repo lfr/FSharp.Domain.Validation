@@ -1,2 +1,2 @@
 theme: jekyll-theme-minimal
-base-url: /FSharp.ValidationBlocks/
+baseurl: '/FSharp.ValidationBlocks/'
