@@ -1,8 +1,8 @@
-[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=nuget:FSharp.ValidationBlocks)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
-[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=nuget:FSharp.ValidationBlocks.Fable)](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.ValidationBlocks)](https://www.nuget.org/packages/FSharp.ValidationBlocks/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.ValidationBlocks.Fable)](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)
 <!-- [![twitter](https://img.shields.io/twitter/follow/LuisLikeIewis?label=Follow%20%40IuisIikeIewis&style=social)](http://twitter.com/intent/user?screen_name=LuisLikeIewis)  -->
 
-|<small><sub><sup>⚠&nbsp;</sup></sub></small>ꜰᴀʙʟᴇ<small><sub><sup>&nbsp;⚠</sup></sub></small>|For Fable projects please use the package <u>and the namespace</u> [`FSharp.ValidationBlocks.Fable`](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)|
+|<small><sub><sup>⚠&nbsp;</sup></sub></small>ꜰᴀʙʟᴇ<small><sub><sup>&nbsp;⚠</sup></sub></small>|For Fable projects please use both the package and the namespace [FSharp.ValidationBlocks.Fable](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)|
 :---: | :---
 
 <br>
@@ -33,7 +33,7 @@ There's no other mentions of interfaces in the code that uses or creates validat
 
 ## How it works
 
-First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions. These 3 simple steps are enough to ensure <u>at compilation time</u> that all your domain is always **always** valid!
+First you declare your error types, then you declare your actual domain types (i.e. `Tweet`), and finally you use them with the provided `Block.value` and `Block.validate` functions. These 3 simple steps are enough to ensure at compilation time that all your domain is always **always** valid!
 
 <p align="center">
     <a href="https://impure.fun/FSharp.ValidationBlocks/demo.html"><img src="assets/demo.gif" alt="demo">]</a>
