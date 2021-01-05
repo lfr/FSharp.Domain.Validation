@@ -7,7 +7,7 @@ open System
 
 /// Define all the possible errors that the blocks can yield
 type TextError =
-    | ``Contains control characters``
+    | ``Contains ctrl chars``
     | ``Is missing or blank``
     | ``Is not a valid integer``
 
@@ -27,7 +27,7 @@ type Text = private Text of FreeText with
     interface TextBlock with
         member _.Validate =
             fun s ->
-                [if containsControlCharacters s then ``Contains control characters``]
+                [if containsControlCharacters s then ``Contains ctrl chars``]
 
 /// String representation of an integer
 type Integer = private Integer of FreeText with

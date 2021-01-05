@@ -25,6 +25,8 @@ textarea {
 table {
     font-family: 'Inconsolata', monospace;
     font-size: smaller;
+    background-color: #111;
+    border: 1px solid black;
 }
 
 div {
@@ -45,7 +47,6 @@ th {
 td {
     font-size: smaller;
     color: white;
-    background: black;
 }
 
 tbody tr td:first-child {
@@ -74,6 +75,8 @@ tbody tr td:last-child {
 
 .result {
     color: yellow;
+    font-size: smaller;
+    font-family: sans-serif;
 }
 
 a {
