@@ -50,3 +50,9 @@ a:hover {
 .footer a {
     color: gray;
 }
+
+pre.highlight {
+    background: #111;
+    border: 1px solid black;
+    padding: .5rem;
+}
