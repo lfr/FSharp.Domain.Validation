@@ -4,7 +4,7 @@ title: Demo
 permalink: /demo/
 ---
 
-# Fable + ValidationBlocks 💙
+## Fable 💙 ValidationBlocks
 
 <div class="object-container">
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
