@@ -1,6 +1,7 @@
 ---
-layout: page
-title: About
+layout: default
+title: Demo
+permalink: /demo/
 ---
 
 ## Demo
