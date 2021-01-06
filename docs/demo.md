@@ -10,8 +10,18 @@ permalink: /demo/
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
 
-Some text
+### What's this?
+
+This is etc...
+
+### Please note ⚠️
+
+The types `Text`, `FreeText` and `Integer` are not etc...
 
 ```fsharp
 let _ = "some code"
 ```
+
+### Share the love 💙
+
+Twitter share
