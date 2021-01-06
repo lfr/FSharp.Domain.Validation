@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.72</Version>
+		<Version>0.9.73-alpha</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
 		<Product>FSharp.ValidationBlocks.Fable</Product>
@@ -22,6 +22,10 @@
 	  <DefineConstants>TRACE;FABLE_COMPILER;</DefineConstants>
 	  <Optimize>true</Optimize>
 	  <Tailcalls>true</Tailcalls>
+	  <OutputPath>..\.package-bin\</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	  <OutputPath>..\.package-bin\</OutputPath>
 	</PropertyGroup>
 

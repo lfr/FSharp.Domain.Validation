@@ -23,6 +23,10 @@
 	  <OutputPath>..\.package-bin\</OutputPath>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <OutputPath>..\.package-bin\</OutputPath>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<Compile Include="Utils.fs" />
 		<Compile Include="InternalResult.fs" />
