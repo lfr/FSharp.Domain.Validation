@@ -31,7 +31,7 @@ box.oninput <- fun _ ->
 
     result3.textContent <-
         Block.validate<Integer> box.value
-        |> Result.text
+        |> Result.text 
 
 
 // Enable sandbox if debug

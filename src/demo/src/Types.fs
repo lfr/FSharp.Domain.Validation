@@ -34,10 +34,8 @@ type Integer = private Integer of FreeText with
     interface TextBlock with
         member _.Validate =
             fun s ->
-                match Int32.TryParse(s) with
-                | false, _ when not<|String.IsNullOrWhiteSpace s ->
+                if Int32.TryParse(s) |> fst then [] else
                     [``Is not a valid integer``]
-                | _ -> []
 
 
 

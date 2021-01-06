@@ -46,6 +46,7 @@ module Block =
 type Block<'a, 'e> private () = class end with
 
     [<System.Obsolete("Do not call this method, it's intended for internal use.")>]
+    // this method cannot be made private because the calling method has to be inline
     static member wrap (originalInput:'a) (blockType:Type) =
 
         match FSharpType.GetUnionCases (blockType, true) with
@@ -66,7 +67,9 @@ type Block<'a, 'e> private () = class end with
                     FSharpValue.MakeUnion(uci, [|box innerBlock|], true)
                     :?> IBlock<'a, 'e>
 
-                errors @ block.Validate originalInput, innerBlock
+                match errors with
+                | [] -> block.Validate originalInput, innerBlock
+                | e -> e, innerBlock
 
             | x -> sprintf "Expected a single-field union case, but %s contains %i fields." uci.Name x.Length |> failwith
         | x -> sprintf "Expected a single-case union, but %s contains %i cases." blockType.Name x.Length |> failwith
