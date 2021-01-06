@@ -24,6 +24,7 @@
         </thead>
         <tbody>
             <tr>
+            </tr>
             <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
             <tr><td class="comment">// Register our listener</td><td></td></tr>
             <tr><td>box.oninput <span class="keyword">&lt;- fun</span> _ <span class="keyword">-&gt;</span></td><td></td></tr>
@@ -34,7 +35,7 @@
             <tr><td>&nbsp;&nbsp;result1.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Text</span>&gt; box.value</td>
-                <td>// A single line of text</td>
+                <td>// Defined as non-multiline text</td>
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="symbol">|&gt;</span> <span class="type">Result</span>.text</td>
@@ -46,7 +47,7 @@
             <tr><td>&nbsp;&nbsp;result2.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">FreeText</span>&gt; box.value</td>
-                <td>// Any non-blank text</td>
+                <td>// Defined as any non-blank text</td>
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="symbol">|&gt;</span> <span class="type">Result</span>.text</td>
@@ -58,7 +59,7 @@
             <tr><td>&nbsp;&nbsp;result3.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Integer</span>&gt; box.value</td>
-                <td>// Can parse to int</td>
+                <td>// Defined as parseable to int</td>
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<span class="symbol">|&gt;</span> <span class="type">Result</span>.text</td>
