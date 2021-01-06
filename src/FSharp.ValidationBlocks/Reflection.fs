@@ -10,6 +10,8 @@ type BlockInfo =
 module Reflection =
 
     type Flags = System.Reflection.BindingFlags
+    let ``nameof noBlock.Validate`` = "Validate"
+    let ``nameof blockType`` = "blockType"
     
     let private noBlock = Unchecked.defaultof<IBlock<obj,obj>>
     let private typeError (t:System.Type) =
@@ -28,7 +30,7 @@ module Reflection =
                     let validateMi =
                         blockType.GetMethods(Flags.NonPublic ||| Flags.Instance)
                         |> Array.find
-                            (fun mi -> nameof noBlock.Validate |> mi.Name.EndsWith)
+                            (fun mi -> ``nameof noBlock.Validate`` |> mi.Name.EndsWith)
                     let bi =
                         blockType.GetInterfaces()
                         |> Array.find
@@ -45,4 +47,4 @@ module Reflection =
                             }
                     biCache <- biCache |> Map.add blockType.GUID bi
                     bi
-                else typeError blockType |> invalidArg (nameof blockType))
+                else typeError blockType |> invalidArg (``nameof blockType``))

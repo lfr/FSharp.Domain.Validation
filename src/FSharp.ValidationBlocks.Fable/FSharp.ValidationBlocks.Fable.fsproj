@@ -28,6 +28,16 @@
 	<ItemGroup>
 		<Compile Include="Types.fs" />
 		<Compile Include="Block.fs" />
+		<Compile Include="Thoth.fs" />
+	</ItemGroup>
+		
+	<!-- Requred for Fable -->
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" Visible="false">
+			<PackagePath>.\fable\</PackagePath>
+		</Content>
+		<Content Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,15 +49,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Fable.Core" Version="3.2.2" />
+		<PackageReference Include="Thoth.Json" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\FSharp.ValidationBlocks\FSharp.ValidationBlocks.fsproj" />
-	</ItemGroup>
-
-	<!-- Add source files to "fable" folder in Nuget package -->
-	<ItemGroup>
-		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath=".\fable\" />
 	</ItemGroup>
 
 </Project>

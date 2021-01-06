@@ -45,6 +45,7 @@ module Block =
 
 type Block<'a, 'e> private () = class end with
 
+    [<System.Obsolete("Do not call this method, it's intended for internal use.")>]
     static member wrap (originalInput:'a) (blockType:Type) =
 
         match FSharpType.GetUnionCases (blockType, true) with

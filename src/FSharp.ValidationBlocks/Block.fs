@@ -3,10 +3,14 @@
 open Microsoft.FSharp.Reflection
 open FSharp.ValidationBlocks.Reflection
 
-//#if FABLE_COMPILER
-//[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.", true)>]
-//#endif
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+#endif
 module Block =
+
+    #if FABLE_COMPILER
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+    #endif
 
     type Module = interface end    
     
@@ -128,9 +132,11 @@ type Block<'a, 'e> private () = class end with
 
 
 module Runtime =
+
+    let ``nameof Block.wrap`` = "wrap"
     
     let private wrapMi =
-        (nameof Block.wrap, Flags.NonPublic ||| Flags.Static)
+        (``nameof Block.wrap``, Flags.NonPublic ||| Flags.Static)
         |> typeof<Block.Module>.DeclaringType.GetMethod
 
     /// Non-generic version of Block.verbatim, mostly meant for serialization

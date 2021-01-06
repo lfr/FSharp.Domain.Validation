@@ -1,8 +1,8 @@
 ﻿<!doctype html>
 <html>
 <head>
-    
-    <title>FSharp.ValidationBlocks.Fable Demo</title>
+
+    <title>Demo</title>
 
     <!-- This is the narrowest openfont font I could find -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -10,7 +10,7 @@
 
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" />
     <link rel="stylesheet" href="style.css" />
 
 </head>
@@ -70,6 +70,19 @@
         </tbody>
     </table>
     <div>Powered by <a href="https://fable.io/" target="_blank">Fable</a> with <a href="https://github.com/lfr/FSharp.ValidationBlocks">FSharp.ValidationBlocks</a></div>
+
+
+    <pre>♯</pre>
+
+    <!-- emoji favicon -->
+    <script language="javascript">
+        const faviconHref = emoji =>
+            `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22
+             width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text
+             x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22
+             text-anchor=%22middle%22 font-size=%2280%22>${emoji}</text></svg>`
+        document.querySelector("link[rel*='icon']").href = faviconHref("🧪");
+    </script>
     <script src="bundle.js"></script>
 </body>
 </html>

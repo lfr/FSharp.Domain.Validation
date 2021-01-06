@@ -37,8 +37,8 @@ div {
 }
 
 th {
-    background: gray;
-    color: gainsboro;
+    background: dimgray;
+    color: black;
     font-weight: normal;
     font-size: smaller;
     padding: .2rem;

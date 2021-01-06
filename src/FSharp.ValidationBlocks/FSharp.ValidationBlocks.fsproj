@@ -35,6 +35,15 @@
 		<Compile Include="Program.fs" />
 	</ItemGroup>
 
+	<!-- Requred for Fable -->
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" Visible="false">
+			<PackagePath>.\fable\</PackagePath>
+		</Content>
+		<Content Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<None Include="..\..\logo\square.png">
 			<Pack>True</Pack>
@@ -48,11 +57,6 @@
 
 	<ItemGroup>
 		<PackageReference Update="FSharp.Core" Version="4.7.2" />
-	</ItemGroup>
-
-	<!-- Add source files to "fable" folder in Nuget package -->
-	<ItemGroup>
-		<Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
 	</ItemGroup>
 
 </Project>
