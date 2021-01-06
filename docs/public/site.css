@@ -15,7 +15,7 @@ body {
 }
 
 object {
-   height: 25rem;
+   height: 22rem;
    width: 100%;
 }
 
@@ -69,4 +69,4 @@ code.language-plaintext {
     border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 6px;
     padding: .2rem .4rem;
-}
+}   
