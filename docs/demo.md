@@ -26,9 +26,9 @@ You may be thinking "*ok, so `FreeText` is an object with a private constructor 
 
 ```fsharp
 type FreeText = private FreeText of string with
-    interface TextBlock with
-        member _.Validate =
-            String.IsNullOrWhiteSpace ==> IsMissingOrBlank 🤯
+  interface TextBlock with
+    member _.Validate =
+      String.IsNullOrWhiteSpace ==> IsMissingOrBlank 🤯
 ```
 
 This simplicity is not just a nicety, remember that you're supposed to replace **ᴀʟʟ** your strings with similar types, it's crucial that these can be defined with minimal code.
@@ -39,9 +39,9 @@ While our other demo type `Text` also rejects empty strings, its definition does
 
 ```fsharp
 type Text = private Text of FreeText with
-    interface TextBlock with
-        member _.Validate =
-            containsControlCharacters ==> ContainsCtrlChars 🤯🤯
+  interface TextBlock with
+    member _.Validate =
+      containsControlCharacters ==> ContainsCtrlChars 🤯🤯
 ```
 
 ## KISS™ certified ✔
@@ -53,21 +53,21 @@ open type FSharp.ValidationBlocks.Block<string, TextError>
 
 // dummy domain (dumdom?)
 type MyDomain =
-    {
-        TextProp: Text
-        FreeTextProp: FreeText
-    }
+  {
+    TextProp: Text
+    FreeTextProp: FreeText
+  }
 
 // this creates a validated MyDomain record:
 result {
-    let! text = validate inp1 🤯🤯🤯
-    and! freeText = validate inp2
+  let! text = validate inp1 🤯🤯🤯
+  and! freeText = validate inp2
 
-    return
-    {
-        TextProp = text
-        FreeTextProp = freeText
-    }
+  return
+  {
+    TextProp = text
+    FreeTextProp = freeText
+  }
 }
 ```
 
