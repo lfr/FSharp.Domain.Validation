@@ -1,4 +1,4 @@
-﻿namespace FSharp.ValidationBlocks
+﻿namespace FSharp.ValidationBlocks.Fable
 
 open FSharp
 

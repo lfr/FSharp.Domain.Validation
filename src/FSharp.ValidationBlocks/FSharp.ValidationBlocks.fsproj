@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>Exe</OutputType>
+		<OutputType>Library</OutputType>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.74-alpha</Version>
+		<Version>0.9.74-alpha8</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
 		<Product>FSharp.ValidationBlocks</Product>
@@ -36,7 +36,6 @@
 		<Compile Include="Operators.fs" />
 		<Compile Include="Serialization.fs" />
 		<Compile Include="Example\Text.fs" />
-		<Compile Include="Program.fs" />
 	</ItemGroup>
 
 	<!-- Requred for Fable -->

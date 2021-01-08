@@ -1,6 +1,6 @@
-﻿namespace FSharp.ValidationBlocks
+﻿namespace FSharp.ValidationBlocks.Fable
 
-open FSharp.ValidationBlocks.Block
+open FSharp.ValidationBlocks.Fable.Block
 
 [<AutoOpen>]
 module NamespaceOperators =
@@ -22,5 +22,3 @@ module Operators =
     
     /// Flattens a list of error lists. Use: fun s -> !? [ condition1 s => MyError; condition2 s => MyError; ]
     let (!?) (errors:'e list list) : 'e list = errors |> List.concat
-
-

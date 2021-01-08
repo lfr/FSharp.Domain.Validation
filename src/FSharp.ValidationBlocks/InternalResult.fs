@@ -20,7 +20,7 @@ type internal Result<'error>(value:obj, errors:'error list) =
 #else
 /// This helper type should not be used outside of this library
 type internal Result<'error>(value:obj, errors:'error list) =
-#endif
+
 
     member x.IsOk = errors |> List.isEmpty
     member x.Errors =
@@ -38,4 +38,4 @@ type internal Result<'error>(value:obj, errors:'error list) =
     interface IBlockResult with
         member x.Unbox () = x.Value |> box |> unbox
 
-
+#endif

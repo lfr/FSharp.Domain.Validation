@@ -1,41 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;FABLE_COMPILER</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;;FABLE_COMPILER;</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="src\Helper.fs" />
-    <Compile Include="src\Types.fs" />
-    <Compile Include="src\Examples.fs" />
-    <Compile Include="src\App.fs" />
-    <Content Include="public\index.html" />
-    <Content Include="public\style.css" />
-    <None Include="Nuget.Config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Procfile" />
-    <Content Include="Aptfile" />
-    <None Include="server.js" />
-    <Content Include="package.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="webpack.config.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Fable.Browser.Dom" Version="2.2.0" />
-    <PackageReference Include="Fable.Core" Version="3.2.2" />
-	<PackageReference Include="Thoth.Json" Version="5.0.0" />
-    <PackageReference Condition="'$(Configuration)'!='Debug'" Include="FSharp.ValidationBlocks.Fable" Version="0.9.74-alpha2" />
-  </ItemGroup>
-  <!--<ItemGroup>
-	<ProjectReference Condition="'$(Configuration)'=='Debug'" Include="..\FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj" />
-  </ItemGroup>-->
-  <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="5.0.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>TRACE;FABLE_COMPILER</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DefineConstants>TRACE;;FABLE_COMPILER;</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="src\Helper.fs" />
+		<Compile Include="src\Types.fs" />
+		<Compile Include="src\Examples.fs" />
+		<Compile Include="src\App.fs" />
+		<Content Include="public\index.html" />
+		<Content Include="public\style.css" />
+		<None Include="Nuget.Config" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="Procfile" />
+		<Content Include="Aptfile" />
+		<None Include="server.js" />
+		<Content Include="package.json" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="webpack.config.js" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Fable.Browser.Dom" Version="2.2.0" />
+		<PackageReference Include="Fable.Core" Version="3.2.2" />
+		<PackageReference Include="Thoth.Json" Version="5.0.0" />
+		<PackageReference Include="FSharp.ValidationBlocks.Fable" Version="0.9.74-alpha8" />
+	</ItemGroup>
+	<!--<ItemGroup>
+		<ProjectReference Include="..\FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj" />
+	</ItemGroup>-->
+	<ItemGroup>
+		<PackageReference Update="FSharp.Core" Version="5.0.0" />
+	</ItemGroup>
 </Project>

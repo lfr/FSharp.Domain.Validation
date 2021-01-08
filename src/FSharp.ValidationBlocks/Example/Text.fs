@@ -2,8 +2,8 @@
 
 
 open FSharp.ValidationBlocks
-open System.Text.RegularExpressions
 open FSharp.ValidationBlocks.Operators
+open FSharp.ValidationBlocks.Utils
 
 /// Define all the possible errors that the blocks can yield
 type TextError =
@@ -48,7 +48,7 @@ type Text = private Text of FreeText with
     interface TextBlock with
         member _.Validate =
             fun s ->
-                [if s |> Regex("\p{C}").IsMatch then ContainsControlCharacters]
+                [if containsControlCharacters s then ContainsControlCharacters]
 
 
 /// Text restricted to 280 characters at most when trimmed

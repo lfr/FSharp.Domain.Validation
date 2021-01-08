@@ -2,8 +2,8 @@
 
 open Browser.Dom
 open Thoth.Json
-open FSharp.ValidationBlocks
-open FSharp.ValidationBlocks.Thoth
+open FSharp.ValidationBlocks.Fable
+open FSharp.ValidationBlocks.Fable.Thoth
 
 let pre = document.querySelector("pre") :?> Browser.Types.HTMLPreElement
 let box = document.querySelector("#inp") :?> Browser.Types.HTMLTextAreaElement
@@ -20,7 +20,7 @@ let sandbox () =
                 Block = typeof<FreeText>.Name
                 Value = 
                     Block.validate<FreeText> box.value
-                    |> function Ok x -> x | _ -> failwith ""
+                    |> function Ok x -> x | _ -> failwith "invalid"
             |}
 
         sprintf "Toth serialized content:\n%s" <| 

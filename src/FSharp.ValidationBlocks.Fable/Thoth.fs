@@ -1,6 +1,6 @@
-﻿namespace FSharp.ValidationBlocks.Thoth
+﻿namespace FSharp.ValidationBlocks.Fable.Thoth
 
-open FSharp.ValidationBlocks
+open FSharp.ValidationBlocks.Fable
 open Thoth.Json
 
 /// Contains custom encoder and decoder to property serialize blocks as their
