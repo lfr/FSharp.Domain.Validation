@@ -2,8 +2,8 @@
 
 open Browser.Dom
 open Thoth.Json
-open FSharp.ValidationBlocks.Fable
-open FSharp.ValidationBlocks.Fable.Thoth
+open FSharp.ValidationBlocks
+open FSharp.ValidationBlocks.Thoth
 
 let pre = document.querySelector("pre") :?> Browser.Types.HTMLPreElement
 let box = document.querySelector("#inp") :?> Browser.Types.HTMLTextAreaElement

@@ -1,12 +1,27 @@
 ﻿namespace FSharp.ValidationBlocks
 
+
+
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+#endif
 /// A runtime result containing either a valid block or a list of errors
 type IBlockResult =
+
     /// Get the result's block if valid, otherwise throw exception
     abstract member Unbox : unit -> 'result
 
+
+
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+type internal Result<'error>(value:obj, errors:'error list) =
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 /// This helper type should not be used outside of this library
 type internal Result<'error>(value:obj, errors:'error list) =
+#endif
+
     member x.IsOk = errors |> List.isEmpty
     member x.Errors =
         if x.IsOk then

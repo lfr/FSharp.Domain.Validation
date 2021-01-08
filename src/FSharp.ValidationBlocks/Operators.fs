@@ -3,11 +3,24 @@
 open FSharp.ValidationBlocks.Block
 
 [<AutoOpen>]
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+module NamespaceOperators =
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 module NamespaceOperators =
 
     /// Same as Block.value
     let inline (~%) block = value block
 
+#endif
+
+
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+module Operators = 
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 module Operators = 
     
     /// Turns predicates into errors, useful when there's a predicate available to use.
@@ -23,4 +36,4 @@ module Operators =
     /// Flattens a list of error lists. Use: fun s -> !? [ condition1 s => MyError; condition2 s => MyError; ]
     let (!?) (errors:'e list list) : 'e list = errors |> List.concat
 
-
+#endif

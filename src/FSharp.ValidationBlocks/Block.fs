@@ -5,12 +5,10 @@ open FSharp.ValidationBlocks.Reflection
 
 #if FABLE_COMPILER
 [<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
-#endif
 module Block =
-
-    #if FABLE_COMPILER
     do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
-    #endif
+#else
+module Block =
 
     type Module = interface end    
     
@@ -117,6 +115,13 @@ module Block =
         (left:IBlock<'baseType, 'e>) (right:IBlock<'baseType, 'e>) =
         (value left).CompareTo(value right)
 
+#endif
+
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+type Block<'a, 'e> private () = class end with
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 type Block<'a, 'e> private () = class end with
 
     /// Creates a block from the given input if valid, otherwise returns an Error (strings are NOT canonicalized),
@@ -130,7 +135,13 @@ type Block<'a, 'e> private () = class end with
     static member validate (inp:'a) : Result<'block, 'e list> =
         Utils.canonicalize inp typeof<'a> |> Block<'a, 'e>.verbatim
 
+#endif
 
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+module Runtime =
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 module Runtime =
 
     let ``nameof Block.wrap`` = "wrap"
@@ -145,7 +156,13 @@ module Runtime =
         let mi = wrapMi.MakeGenericMethod([|bi.ErrorType|])
         mi.Invoke(null, [|input; List.empty<UnionCaseInfo>; blockType|]) :?> _
         
+#endif
 
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+type Unchecked<'a> private () = class end with
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 type Unchecked<'a> private () = class end with
 
     /// Creates a block from the given input if valid, otherwise throws an exception,
@@ -153,3 +170,5 @@ type Unchecked<'a> private () = class end with
     static member blockof<'block when 'block :> IBlockOf<'a>> (inp:'a) : 'block =
         let result = Runtime.verbatim typeof<'block> inp
         result.Unbox()
+
+#endif

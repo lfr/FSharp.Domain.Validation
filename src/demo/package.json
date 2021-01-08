@@ -5,14 +5,13 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "build": "webpack -p",
+    "build": "dotnet fable . --run webpack-dev-server",
+    "heroku-postbuild": "dotnet new tool-manifest && dotnet tool install fable && dotnet fable . --run webpack",
     "start": "node server.js",
-    "dev": "webpack-dev-server"
+    "dev": "dotnet fable watch . --run webpack-dev-server"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
-    "fable-compiler": "^2.13.0",
-    "fable-loader": "^2.1.9",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "webpack": "^4.44.2",

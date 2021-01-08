@@ -1,8 +1,9 @@
 ﻿[<AutoOpen>]
 module Types
 
-open FSharp.ValidationBlocks.Fable
+open FSharp.ValidationBlocks
 open FSharp.ValidationBlocks.Utils
+open FSharp.ValidationBlocks.Operators
 open System
 
 /// Define all the possible errors that the blocks can yield
@@ -15,12 +16,15 @@ type TextError =
 /// and function signatures a lot more readable
 type TextBlock = inherit IBlock<string, TextError>
 
-/// Single or multi-line text without any validation
-type FreeText = private FreeText of string with
-    interface TextBlock with
-        member _.Validate =
-            fun s ->
-                [if s |> String.IsNullOrWhiteSpace then ``Is missing or blank``]
+    /// Single or multi-line text without additional validation
+    type FreeText = private FreeText of string with
+        interface TextBlock with
+            member _.Validate =
+                String.IsNullOrWhiteSpace ==> ``Is missing or blank``
+
+        // can be simplified using FSharp.ValidationBlocks.Operators:
+        // member _.Validate =
+        //    String.IsNullOrWhiteSpace ==> ``Is missing or blank``
                             
 /// Single line of text (no control characters)
 type Text = private Text of FreeText with

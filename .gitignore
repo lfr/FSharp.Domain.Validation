@@ -355,3 +355,5 @@ MigrationBackup/
 # Custom
 src/Properties
 .package-bin/
+/src/demo/.config
+*.fs.js

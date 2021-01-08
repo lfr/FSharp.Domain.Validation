@@ -1,5 +1,6 @@
 ﻿namespace FSharp.ValidationBlocks.Example
 
+
 open FSharp.ValidationBlocks
 open System.Text.RegularExpressions
 open FSharp.ValidationBlocks.Operators
@@ -10,6 +11,8 @@ type TextError =
     | ContainsTabs
     | ExceedsMaximumLength of int
     | IsMissingOrBlank
+
+#if !FABLE_COMPILER
 
 /// This interface in not strictly necessary but it makes type declarations
 /// and function signatures a lot more readable
@@ -75,3 +78,5 @@ type Tweet' = private Tweet' of FreeText with
                 s.Contains("\t")  => ContainsTabs
                 s.Length > 280    => ExceedsMaximumLength 280
             ]
+
+#endif

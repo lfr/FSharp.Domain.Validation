@@ -1,6 +1,8 @@
 ﻿#if FABLE_COMPILER
-module __hide_fable
-#endif
+[<System.Obsolete("Hidden in FABLE", true)>]
+module _hidden
+    do ()
+#else
 
 open System
 open FSharp.ValidationBlocks
@@ -8,9 +10,6 @@ open FSharp.ValidationBlocks.Example
 open FSharp.ValidationBlocks.Serialization
 open System.Text.Json
 
-#if !FABLE_COMPILER
-[<EntryPoint>]
-#endif
 let main argv =
 
     // TODO make actual tests out of these
@@ -40,3 +39,5 @@ let main argv =
     printfn "%s: %A" msg test
     
     0 // exit
+
+#endif

@@ -1,12 +1,15 @@
 ﻿namespace FSharp.ValidationBlocks
 
-
+#if FABLE_COMPILER
+[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
+module Serialization =
+    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
+#else
 open System.Text.Json
 open System.Text.Json.Serialization
 open FSharp.ValidationBlocks.Reflection
 
 module Serialization =
-
 
     type private ValidationBlockJsonConverter<'block> () =
         inherit JsonConverter<'block>()
@@ -39,3 +42,5 @@ module Serialization =
         override _.CreateConverter (t, _) =
             let converterType = typedef.MakeGenericType([|t|])
             System.Activator.CreateInstance converterType :?> JsonConverter
+
+#endif

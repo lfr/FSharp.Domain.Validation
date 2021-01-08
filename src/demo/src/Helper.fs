@@ -1,6 +1,6 @@
 ﻿module Result
 
-open FSharp.ValidationBlocks.Fable
+open FSharp.ValidationBlocks
 
 // Helper function to translate Result`2 objects into readable text
 let text = function
