@@ -30,7 +30,7 @@
 		<PackageReference Include="Fable.Browser.Dom" Version="2.2.0" />
 		<PackageReference Include="Fable.Core" Version="3.2.2" />
 		<PackageReference Include="Thoth.Json" Version="5.0.0" />
-		<PackageReference Include="FSharp.ValidationBlocks.Fable" Version="0.9.74-alpha8" />
+		<PackageReference Include="FSharp.ValidationBlocks.Fable" Version="0.9.74" />
 	</ItemGroup>
 	<!--<ItemGroup>
 		<ProjectReference Include="..\FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj" />
