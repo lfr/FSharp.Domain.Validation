@@ -28,7 +28,8 @@ You may be thinking "*ok, so `FreeText` is an object with a private constructor 
 type FreeText = private FreeText of string with
   interface TextBlock with
     member _.Validate =
-      String.IsNullOrWhiteSpace ==> IsMissingOrBlank //🤯
+      // 🤯
+      String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
 
 This simplicity is not just a nicety, remember that you're supposed to replace **ᴀʟʟ** your strings with similar types, it's crucial that these can be defined with minimal code.
@@ -41,7 +42,8 @@ While our other demo type `Text` also rejects empty strings, its definition does
 type Text = private Text of FreeText with
   interface TextBlock with
     member _.Validate =
-      containsControlCharacters ==> ContainsCtrlChars //🤯🤯
+      // 🤯🤯
+      containsControlChars ==> ContainsCtrlChars
 ```
 
 ## KISS™ certified ✔
@@ -49,7 +51,7 @@ type Text = private Text of FreeText with
 So declaring types requires very little code, but validating does too, in fact the validation function from above doesn't even need to specify the type when it can be inferred:
 
 ```fsharp
-open type FSharp.ValidationBlocks.Block<string, TextError>
+open type FSharp.ValidationBlocks.Block<str, TextErr>
 
 // dummy domain (dumdom?)
 type MyDomain =
@@ -73,8 +75,7 @@ result {
 
 ### 🚨🚨🚨 Fable users: please note 👇
 
-* With Fable you'll have to use the package `FSharp.ValidationBlocks.Fable` **instead of** `FSharp.ValidationBlocks`
-* This package generates some warnings in Fable, follow [Fable#2341](https://github.com/fable-compiler/Fable/issues/2341) for updates on that
+* With Fable you'll have to use the package <u>and namespace</u> `FSharp.ValidationBlocks.Fable` **instead of** `FSharp.ValidationBlocks`
 * The function `Unchecked.blockof` won't be available until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:<br>
   ```fsharp
   |> function Ok x -> x | _ -> failwith "invalid!"
@@ -82,7 +83,13 @@ result {
 
 ### Share the love 💙
 
-Twitter share
+Like what you see? Twitter share
+
+## Serialization
+
+.NET
+
+Fable
 
 ## Still not convinced?
 
@@ -94,5 +101,7 @@ There's a few alternatives to using `FSharp.ValidationBlocks`:
 4. Having a validation module that uses reflection to spawn ready-made valid objects or errors 
    
 * **#1** is the traditional method of doing validation, but it's unsafe as you need to remember to validate content and you can easily apply the wrong rule, since everything returns strings the errors can only be spotted at runtime 😱
-* **#2** and **#3** are equivalent and both require a lot more code than above to declare each type, and since you're supposed to declare many types, it may make your code unwieldy
-* **#4** may sound perfect, but as your domain grows so will that monolithic module and since the validation rules don't live with the types but in the validation module, you can't re-use them across independent projects unless you bring the validation module along with them
+* **#2** and **#3** are equivalent and both require a lot more code than above to declare each type which can potentially make your code reeealy repetitive 😴
+* **#4** may sound perfect, but as your domain grows so will that monolithic module and since the validation rules don't live with the types but in the validation module, you can't re-use them across independent projects unless you bring the validation module along with them 😩
+
+Don't agree? I'd love to [hear from you](https://twitter.com/luislikeIewis)!
