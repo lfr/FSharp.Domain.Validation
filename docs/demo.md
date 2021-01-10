@@ -28,8 +28,8 @@ You may be thinking "*ok, so `FreeText` is an object with a private constructor 
 type FreeText = private FreeText of string with
   interface TextBlock with
     member _.Validate =
-      // 🤯
       String.IsNullOrWhiteSpace ==> IsMissingOrBlank
+      // 🤯
 ```
 
 This simplicity is not just a nicety, remember that you're supposed to replace **ᴀʟʟ** your strings with similar types, it's crucial that these can be defined with minimal code.
@@ -42,8 +42,8 @@ While our other demo type `Text` also rejects empty strings, its definition does
 type Text = private Text of FreeText with
   interface TextBlock with
     member _.Validate =
-      // 🤯🤯
       containsControlChars ==> ContainsCtrlChars
+      // 🤯🤯
 ```
 
 ## KISS™ certified ✔
@@ -51,7 +51,7 @@ type Text = private Text of FreeText with
 So declaring types requires very little code, but validating does too, in fact the validation function from above doesn't even need to specify the type when it can be inferred:
 
 ```fsharp
-open type FSharp.ValidationBlocks.Block<str, TextErr>
+open type FSharp.ValidationBlocks.Block<str, TxtErr>
 
 // dummy domain (dumdom?)
 type MyDomain =
@@ -62,8 +62,9 @@ type MyDomain =
 
 // this creates a validated MyDomain record:
 result {
-  let! text = validate inp1 //🤯🤯🤯
+  let! text = validate inp1
   and! freeText = validate inp2
+  //🤯🤯🤯
 
   return
   {

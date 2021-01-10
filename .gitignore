@@ -357,3 +357,4 @@ src/Properties
 .package-bin/
 /src/demo/.config
 *.fs.js
+/src/ConsoleApplication1

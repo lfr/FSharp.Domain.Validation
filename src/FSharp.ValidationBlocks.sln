@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp.ValidationBlocks", "FSharp.ValidationBlocks\FSharp.ValidationBlocks.fsproj", "{E788CE37-23C0-4573-AB4D-253F4796DAF4}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.ValidationBlocks.Fable", "FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj", "{5593AAFC-6A39-4F5A-8C09-F0DE95051573}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp.ValidationBlocks.Fable", "FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj", "{5593AAFC-6A39-4F5A-8C09-F0DE95051573}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "demo", "demo\demo.fsproj", "{D7EE84D3-7323-46B8-9E52-70CD7E955C3C}"
 EndProject
