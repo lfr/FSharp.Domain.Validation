@@ -78,7 +78,7 @@ result {
 
 ## May contain traces of RTFM 📖
 
-Do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home.
+I know it all sounds super easy but do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home.
 
 ## 🚨🚨 Fable users: please note 🚨🚨
 
@@ -101,30 +101,14 @@ Do me and yourself a favor, [read the project's README](https://github.com/lfr/F
   |> function Ok x -> x | _ -> failwith "💣"
   ```
 
-### Share the love 💙
+## Share the love 💙
 
 Like what you see?
 <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world">
-Tweet</a>{{ permalink }}
-
-## Serialization
-
-.NET
-
-Fable
-
-## Still not convinced?
-
-There's a few alternatives to using `FSharp.ValidationBlocks`:
-
-1. Defining your domain with strings & creating validation functions that are called when necessary
-2. Creating objects with validation in the constructor
-3. Creating single-case unions with corresponding validation modules
-4. Having a validation module that uses reflection to spawn ready-made valid objects or errors 
-   
-* **#1** is the traditional method of doing validation, but it's unsafe as you need to remember to validate content and you can easily apply the wrong rule, since everything returns strings the errors can only be spotted at runtime 😱
-* **#2** and **#3** are equivalent and both require a lot more code than above to declare each type which can potentially make your code reeealy repetitive 😴
-* **#4** may sound perfect, but as your domain grows so will that monolithic module and since the validation rules don't live with the types but in the validation module, you can't re-use them across independent projects unless you bring the validation module along with them 😩
-
-Don't agree? I'd love to [hear from you](https://twitter.com/luislikeIewis)!
+  href="https://twitter.com/intent/tweet"
+  data-hashtags="fsharp"
+  data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
+  data-via="luislikeiewis"
+  data-related="luislikeiewis"
+  data-size="large">
+Tweet</a>
