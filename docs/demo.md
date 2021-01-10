@@ -98,7 +98,7 @@ result {
 Like what you see?
 <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet?text=Hello%20world">
-Tweet</a>{{ parmalink }}
+Tweet</a>{{ permalink }}
 
 ## Serialization
 
