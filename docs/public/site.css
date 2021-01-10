@@ -68,7 +68,7 @@ a:hover {
 
 .footer a {
     color: gray;
-    margin: 1rem;
+    padding: 1rem;
 }
 
 pre.highlight {
