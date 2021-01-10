@@ -1,2 +1,3 @@
-theme: jekyll-theme-minimal
-baseurl: '/FSharp.ValidationBlocks/'
+theme:    jekyll-theme-minimal
+url:      https://impure.fun
+baseurl:  '/FSharp.ValidationBlocks/'

@@ -1,7 +1,10 @@
 ---
 layout: default
-title: Demo
+title: Fable validation demo 💙
 permalink: /demo/
+description: >-
+  Do not go gentle into that impure night
+image: /assets/2021/fable-validation-blocks.png
 ---
 
 ## Fable validation demo 💙
@@ -108,6 +111,7 @@ Like what you see?
   <a class="twitter-share-button"
     href="https://twitter.com/intent/tweet"
     data-hashtags="fsharp"
+    data-via="luislikeiewis"
     data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
     data-related="luislikeiewis"
     data-size="large">
