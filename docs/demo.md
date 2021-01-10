@@ -95,8 +95,13 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 
   let myExtraCoders =
     Extra.empty
-    |> Extra.withCustom Codec.Encode<FreeText>
-       Codec.Decode<FreeText>
+    |> Extra.withCustom
+        Codec.Encode<Text>
+        Codec.Decode<Text>
+    |> Extra.withCustom
+        Codec.Encode<FreeText>
+        Codec.Decode<FreeText>
+    // etc…
   ```
 
 * The function `Unchecked.blockof` won't be available in Fable until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:
