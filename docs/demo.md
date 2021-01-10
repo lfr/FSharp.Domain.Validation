@@ -110,8 +110,6 @@ Like what you see?
 <p>
   <a class="twitter-share-button"
     href="https://twitter.com/intent/tweet"
-    data-hashtags="fsharp"
-    data-via="luislikeiewis"
     data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
     data-related="luislikeiewis"
     data-size="large">
