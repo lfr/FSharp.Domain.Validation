@@ -14,7 +14,7 @@ Try typing something below and vaguely guessing what the `validate` function doe
 You may be thinking that validate looks something like this:
 ```
 match 'type with
-| Text     -> check that it's single line and not null
+| Text     -> check that it's 1 line & not blank
 | FreeText -> check that it's not null
 | Integer  -> check that it can be parsed to int
 ```
@@ -79,7 +79,7 @@ result {
 * With Fable you'll have to use the package <u>and namespace</u> `FSharp.ValidationBlocks.Fable` **instead of** `FSharp.ValidationBlocks`
 * The function `Unchecked.blockof` won't be available until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:<br>
   ```fsharp
-  |> function Ok x -> x | _ -> failwith "invalid!"
+  |> function Ok x -> x | _ -> failwith "💣"
   ```
 
 ### Share the love 💙
