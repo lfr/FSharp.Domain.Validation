@@ -11,7 +11,7 @@ Try typing something below and guessing what `validate` does, knowing that the f
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
 
-Perhaps you're thinking that `validate` looks like this:
+Perhaps you're thinking `validate` looks like this:
 
 ```
 match 'type with
@@ -20,7 +20,7 @@ match 'type with
 | Integer  -> check that it can be parsed to int
 ```
 
-Turns out `validate` does nothing of the sort because it's not defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our very own custom types `Text`, `FreeText`, and `Integer`.
+Turns out `validate` does nothing of the sort because it's not defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our own custom types `Text`, `FreeText`, and `Integer`.
 
 ## 100% Object-free ✔
 
