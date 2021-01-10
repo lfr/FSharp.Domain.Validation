@@ -80,7 +80,7 @@ result {
 
 I know it all sounds super easy but do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home.
 
-## 🚨🚨 Fable users: please note 🚨🚨
+## 🚨 Fable users: please note 🚨
 
 * With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable` <u>instead of</u> <s>`FSharp.ValidationBlocks`</s>
   ```fsharp
