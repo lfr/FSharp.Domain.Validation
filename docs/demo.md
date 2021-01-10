@@ -11,7 +11,7 @@ Try typing something below and guessing what `validate` does, knowing that the f
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
 
-Perhaps you're thinking `validate` looks like this:
+Perhaps you have something like this in mind:
 
 ```
 match 'type with
@@ -34,9 +34,9 @@ type FreeText = private FreeText of string with
       // 🤯
 ```
 
-This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your strings with similar types, which you should, it's crucial that these can be defined with minimal code.
+This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your validated strings with similar types, [and you should](https://impure.fun/fun/2020/03/04/these-arent-the-types/), it's crucial that these can be defined with minimal code.
 
-## DRY™ certified ✔
+## Certified DRY™ ✔
 
 While our other custom type `Text` also rejects empty strings, its definition <u>doesn't even declare that rule</u>:
 
@@ -48,9 +48,9 @@ type Text = private Text of FreeText with
       // 🤯🤯
 ```
 
-## KISS™ certified ✔
+## Certified KISS™ ✔
 
-So declaring types requires very little code, but validating does too, in fact the validation function from wouldn't even have to specify a type if it could be inferred like in the code below:
+So declaring types requires very little code, but validating does too! In fact the validation function wouldn't even have to specify a type if it could be inferred like in the code below:
 
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
@@ -76,18 +76,26 @@ result {
 }
 ```
 
-### 🚨🚨🚨 Fable users: please note 👇
+## May contain traces of RTFM 📖
 
-* With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable` **instead of** <s>`FSharp.ValidationBlocks`</s>
+Do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home.
+
+## 🚨🚨🚨 Fable users: please note 👇
+
+* With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable` <u>instead of</u> <s>`FSharp.ValidationBlocks`</s>
   ```fsharp
   open FSharp.ValidationBlocks.Fable
   ```
-* Records like `MyDomain` above are worthless in javascript unless they can be used, to properly serialize them with [Thoth.Json](https://thoth-org.github.io/Thoth.Json/) use extra encoders <u>for each block type</u>:
+* Records like `MyDomain` above are worthless unless they can be used in javascript, to properly serialize them with [Thoth.Json](https://thoth-org.github.io/Thoth.Json/) use extra encoders <u>for each block type</u>:
   ```fsharp
+  open FSharp.ValidationBlocks.Fable.Thoth
+
   let myExtraCoders =
     Extra.empty
-    |> Extra.withCustom Codec.Encode<FreeText> Codec.Decode<FreeText>
+    |> Extra.withCustom Codec.Encode<FreeText>
+       Codec.Decode<FreeText>
   ```
+
 * The function `Unchecked.blockof` won't be available in Fable until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:
   ```fsharp
   |> function Ok x -> x | _ -> failwith "💣"
