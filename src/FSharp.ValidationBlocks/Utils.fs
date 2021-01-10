@@ -1,5 +1,7 @@
 ﻿namespace FSharp.ValidationBlocks
 
+open System
+
 module Utils =
 
     /// All control or whitespace characters
@@ -24,6 +26,19 @@ module Utils =
         | x when inpType <> typeof<string> -> x
         | x -> (box x :?> string).Trim(ctrlWhitespaceChars).Replace("\0","") |> box
         |> unbox
+
+    /// Converts 'PascalCase' to 'lower case'.
+    /// This can be useful to convert error union cases to error messages.
+    let inline depascalize (s:string) =        
+        s.ToCharArray ()
+        |> Array.mapi
+            (fun i c ->
+                match c with
+                | c when i = 0 -> [|Char.ToLowerInvariant c|]
+                | c when Char.IsUpper c -> [|' '; Char.ToLowerInvariant c|]
+                | c -> [|c|])
+        |> Array.concat
+        |> String
 
     /// Returnes true if string contains control characters
     let containsControlCharacters (s:string) =

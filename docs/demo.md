@@ -6,23 +6,25 @@ permalink: /demo/
 
 ## Fable validation demo 💙
 
-Try typing something below and vaguely guessing what the `validate` function does, knowing that the helper function  `Result.text` simply converts `validate`'s `Result<_,_>` to readable text.
+Try typing something below and guessing what `validate` does, knowing that the following `Result.toText` simply converts a `Result<_,_>` to text.
 <div class="object-container">
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
 
-You may be thinking that validate looks something like this:
+Perhaps you're thinking that `validate` looks like this:
+
 ```
 match 'type with
 | Text     -> check that it's 1 line & not blank
 | FreeText -> check that it's not null
 | Integer  -> check that it can be parsed to int
 ```
-Spoiler alert: validate does nothing of the sort, it's not even defined anywhere in this demo's code. It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of what the types `Text` or `FreeText` are, since these are only defined in the demo code!
+
+Turns out `validate` does nothing of the sort because it's not defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our very own custom types `Text`, `FreeText`, and `Integer`.
 
 ## 100% Object-free ✔
 
-You may be thinking "*ok, so `FreeText` is an object with a private constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a validation rule with a type name, with the interface below only being used to identify it as a ValidationBlock and enforce the definition of a validation rule:
+You may be thinking "*ok, so `FreeText` is an object with a private constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a **validation rule** with a **type name**, the interface below only being used to identify it as a validation block and also conveniently enforce the definition of a validation rule with the appropriate signature:
 
 ```fsharp
 type FreeText = private FreeText of string with
@@ -32,11 +34,11 @@ type FreeText = private FreeText of string with
       // 🤯
 ```
 
-This simplicity is not just a nicety, remember that you're supposed to replace **ᴀʟʟ** your strings with similar types, it's crucial that these can be defined with minimal code.
+This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your strings with similar types, which you should, it's crucial that these can be defined with minimal code.
 
 ## DRY™ certified ✔
 
-While our other demo type `Text` also rejects empty strings, its definition doesn't even explicitly declare that rule:
+While our other custom type `Text` also rejects empty strings, its definition <u>doesn't even declare that rule</u>:
 
 ```fsharp
 type Text = private Text of FreeText with
@@ -48,7 +50,7 @@ type Text = private Text of FreeText with
 
 ## KISS™ certified ✔
 
-So declaring types requires very little code, but validating does too, in fact the validation function from above doesn't even need to specify the type when it can be inferred:
+So declaring types requires very little code, but validating does too, in fact the validation function from wouldn't even have to specify a type if it could be inferred like in the code below:
 
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
@@ -76,15 +78,27 @@ result {
 
 ### 🚨🚨🚨 Fable users: please note 👇
 
-* With Fable you'll have to use the package <u>and namespace</u> `FSharp.ValidationBlocks.Fable` **instead of** `FSharp.ValidationBlocks`
-* The function `Unchecked.blockof` won't be available until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:<br>
+* With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable` **instead of** <s>`FSharp.ValidationBlocks`</s>
+  ```fsharp
+  open FSharp.ValidationBlocks.Fable
+  ```
+* Records like `MyDomain` above are worthless in javascript unless they can be used, to properly serialize them with [Thoth.Json](https://thoth-org.github.io/Thoth.Json/) use extra encoders <u>for each block type</u>:
+  ```fsharp
+  let myExtraCoders =
+    Extra.empty
+    |> Extra.withCustom Codec.Encode<FreeText> Codec.Decode<FreeText>
+  ```
+* The function `Unchecked.blockof` won't be available in Fable until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:
   ```fsharp
   |> function Ok x -> x | _ -> failwith "💣"
   ```
 
 ### Share the love 💙
 
-Like what you see? Twitter share
+Like what you see?
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world">
+Tweet</a>{{ parmalink }}
 
 ## Serialization
 

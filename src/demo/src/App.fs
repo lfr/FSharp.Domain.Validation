@@ -15,15 +15,15 @@ box.oninput <- fun _ ->
 
     result1.textContent <-
         validate<Text> box.value
-        |> Result.text
+        |> Result.toText
 
     result2.textContent <-
         validate<FreeText> box.value
-        |> Result.text
+        |> Result.toText
 
     result3.textContent <-
         validate<Integer> box.value
-        |> Result.text 
+        |> Result.toText 
 
 
 
