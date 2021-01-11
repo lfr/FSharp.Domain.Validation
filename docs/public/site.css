@@ -95,4 +95,6 @@ code.language-plaintext {
 
 .twitter-share-button {
    width: 80px !important;
+   vertical-align: middle;
+   margin-top: .01rem;
 }

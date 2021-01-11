@@ -111,7 +111,7 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 
 ## Share the love 💙
 
-Excited about this? Spread the word!
+Excited about this? Spread the word!&nbsp;
 <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
