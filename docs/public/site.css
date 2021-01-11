@@ -95,7 +95,7 @@ code.language-plaintext {
    margin-top: .01rem;
 }
 
-@media (min-width: 48em) {
+@media (max-width: 48em) {
    .twitter-share-button {
       display: block;
       margin-left: auto;
