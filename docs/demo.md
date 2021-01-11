@@ -111,13 +111,11 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 
 ## Share the love 💙
 
-Like what you see?
-<div class="twitter-share-button-container">
-  <a class="twitter-share-button"
-    href="https://twitter.com/intent/tweet"
-    data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
-    data-related="luislikeiewis"
-    data-size="large">
-    Tweet
-  </a>
-</div>
+Excited about this? Spread the word!
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet"
+  data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
+  data-related="luislikeiewis"
+  data-size="large">
+  Tweet
+</a>
