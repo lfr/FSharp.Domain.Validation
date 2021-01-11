@@ -89,12 +89,17 @@ code.language-plaintext {
     padding: .2rem .4rem;
 }
 
-.twitter-share-button-container {
-   text-align: center;
-}
-
 .twitter-share-button {
    width: 80px !important;
    vertical-align: middle;
    margin-top: .01rem;
+}
+
+@media (min-width: 48em) {
+   .twitter-share-button {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+   }
 }
