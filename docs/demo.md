@@ -112,7 +112,7 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 ## Share the love 💙
 
 Like what you see?
-<div>
+<div class="twitter-share-button-container">
   <a class="twitter-share-button"
     href="https://twitter.com/intent/tweet"
     data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
