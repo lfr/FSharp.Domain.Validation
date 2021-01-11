@@ -27,7 +27,7 @@ As it turns out, it does nothing of the sort, in fact `validate` is not even def
 
 ## 100% Object-free ✔
 
-You may be thinking "*ok, so `FreeText` is an object with a private constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a **validation rule** with a **type name**, the interface below only being used to identify it as a validation block and also conveniently enforce the definition of a validation rule with the appropriate signature:
+You may be thinking "*`FreeText` is an object with a constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a **validation rule** with a **type name**, the interface below only being used to identify it as a validation block and conveniently enforce the definition of a validation rule with the appropriate signature:
 
 ```fsharp
 type FreeText = private FreeText of string with
@@ -37,7 +37,7 @@ type FreeText = private FreeText of string with
       // 🤯
 ```
 
-This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your validated strings with similar types, [and you should](https://impure.fun/fun/2020/03/04/these-arent-the-types/), it's crucial that these can be defined with minimal code.
+This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your validated strings with similar types, [and you definitely should](https://impure.fun/fun/2020/03/04/these-arent-the-types/), it's important that these can be defined with minimal code.
 
 ## Certified DRY™ ✔
 
