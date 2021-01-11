@@ -2,7 +2,7 @@
 [![nuget](https://img.shields.io/nuget/v/FSharp.ValidationBlocks.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.ValidationBlocks.Fable)](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)
 <!-- [![twitter](https://img.shields.io/twitter/follow/LuisLikeIewis?label=Follow%20%40IuisIikeIewis&style=social)](http://twitter.com/intent/user?screen_name=LuisLikeIewis)  -->
 
-|<sup><sub><sub>⚠&nbsp;</sub></sub></sup>ꜰᴀʙʟᴇ<sup><sub><sub>&nbsp;⚠</sub></sub></sup>|For Fable projects only reference the package & namespace [FSharp.ValidationBlocks.Fable](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)|
+|ꜰᴀʙʟᴇ|👉 For Fable projects only reference the package & namespace [FSharp.ValidationBlocks.Fable](https://www.nuget.org/packages/FSharp.ValidationBlocks.Fable/)|
 :---: | :---
 
 <br>
