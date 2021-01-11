@@ -7,7 +7,7 @@ description: >-
 image: /assets/2021/fable-validation-blocks.png
 ---
 
-## Fable validation demo 💙
+# Fable validation demo 💙
 
 Try typing something below and guessing what `validate` does, knowing that the following `Result.toText` simply converts a `Result<_,_>` to text.
 <div class="object-container">

@@ -31,7 +31,6 @@ object {
 h1, h2, h3, h4, h5, h6 {
    font-weight: normal;
    padding-bottom: .5rem;
-   border-bottom-width: 1px;
    margin-bottom: 1rem;
    margin-top: 1.5rem;
    text-align: center;
@@ -40,7 +39,11 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 48em) {
    body {width: 80%;}
    object {width: 80%;}
-   h1, h2, h3, h4, h5, h6 {text-align: left;}   
+   h1, h2, h3, h4, h5, h6 {
+      text-align: left;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+   }   
 }
 
 p {
