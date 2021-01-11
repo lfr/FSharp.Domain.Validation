@@ -84,4 +84,8 @@ code.language-plaintext {
     border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 6px;
     padding: .2rem .4rem;
-}   
+}
+
+.twitter-share-button {
+   width: 80px !important;
+}

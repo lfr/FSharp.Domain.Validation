@@ -112,7 +112,7 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 ## Share the love 💙
 
 Like what you see?
-<p>
+<div>
   <a class="twitter-share-button"
     href="https://twitter.com/intent/tweet"
     data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
@@ -120,4 +120,4 @@ Like what you see?
     data-size="large">
     Tweet
   </a>
-</p>
+</div>
