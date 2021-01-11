@@ -84,6 +84,17 @@ result {
 
 I know it all sounds super easy but do me (and yourself) a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home. Not only that document is more up-to-date than this demo, but it also uses examples that don't make the use of `FSharp.ValidationBlocks.Operators` making them easier to understand. For instance here it's not immediately obvious that the `_.Validate` function returns a list of errors.
 
+## Share the love 💙
+
+Excited about this? Spread the word to your fellow dev!&nbsp;
+<a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet"
+  data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
+  data-related="luislikeIewis"
+  data-size="large">
+  Share this
+</a>
+
 ## 🚨 Fable users: read this 👇
 
 * With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable`, <u>not</u> `FSharp.ValidationBlocks`
@@ -110,13 +121,4 @@ I know it all sounds super easy but do me (and yourself) a favor, [read the proj
   |> function Ok x -> x | _ -> failwith "💣"
   ```
 
-## Share the love 💙
-
-Excited about this? Spread the word to your fellow dev!&nbsp;
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
-  data-related="luislikeIewis"
-  data-size="large">
-  Share this
-</a>
+<small>This demo code first appeared in [this article]().</small>
