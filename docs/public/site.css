@@ -86,6 +86,10 @@ code.language-plaintext {
     padding: .2rem .4rem;
 }
 
+.twitter-share-button-container {
+   text-align: center;
+}
+
 .twitter-share-button {
    width: 80px !important;
 }
