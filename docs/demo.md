@@ -90,7 +90,7 @@ I know it all sounds super easy but do me (and yourself) a favor, [read the proj
   ```fsharp
   open FSharp.ValidationBlocks.Fable
   ```
-* Records like `MyDomain` above are worthless unless they can be used in javascript, to properly serialize them with [Thoth.Json](https://thoth-org.github.io/Thoth.Json/) use extra encoders <u>for each block type</u>:
+* Records like `MyDomain` above are worthless unless they can be used in javascript, in order to properly serialize them with [Thoth.Json](https://thoth-org.github.io/Thoth.Json/) use extra encoders <u>for each block type</u>:
   ```fsharp
   open FSharp.ValidationBlocks.Fable.Thoth
 
