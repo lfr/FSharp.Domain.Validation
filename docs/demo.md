@@ -18,7 +18,7 @@ Perhaps you have something like this in mind:
 
 ```
 match 'type with
-| Text     -> check that it's 1 line & not blank
+| Text     -> check that it's 1 line & not null
 | FreeText -> check that it's not null
 | Integer  -> check that it can be parsed to int
 ```
