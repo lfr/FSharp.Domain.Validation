@@ -116,7 +116,7 @@ Excited about this? Spread the word to your fellow dev!&nbsp;
 <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
-  data-related="luislikeiewis"
+  data-related="luislikeIewis"
   data-size="large">
   Share this
 </a>
