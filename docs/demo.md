@@ -9,7 +9,7 @@ image: /assets/2021/fable-validation-blocks.png
 
 # Fable validation demo 💙
 
-Try typing something below and guessing what `validate` does, knowing that the following `Result.toText` simply converts a `Result<_,_>` to text.
+Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` just converts `Result<_,_>` to readable text.
 <div class="object-container">
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
@@ -23,7 +23,7 @@ match 'type with
 | Integer  -> check that it can be parsed to int
 ```
 
-Turns out `validate` does nothing of the sort because it's not defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our own custom types `Text`, `FreeText`, and `Integer`.
+As it turns out, it does nothing of the sort, in fact `validate` is not even defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our own custom types `Text`, `FreeText`, and `Integer`.
 
 ## 100% Object-free ✔
 
@@ -41,7 +41,7 @@ This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** you
 
 ## Certified DRY™ ✔
 
-While our other custom type `Text` also rejects empty strings, its definition <u>doesn't even declare that rule</u>:
+Our other custom type `Text` also rejects empty strings, but its definition <u>doesn't even declare that rule</u>:
 
 ```fsharp
 type Text = private Text of FreeText with
@@ -53,7 +53,7 @@ type Text = private Text of FreeText with
 
 ## Certified KISS™ ✔
 
-So declaring types requires very little code, but validating does too! In fact the validation function wouldn't even have to specify a type if it could be inferred like in the code below:
+So declaring types requires very little code, and validating does too! In fact the validation function doesn't even have to specify a type in most cases like in the code below:
 
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
@@ -67,6 +67,7 @@ type MyDomain =
 
 // this creates a validated MyDomain record:
 result {
+
   let! text = validate inp1
   and! freeText = validate inp2
   //🤯🤯🤯
@@ -81,11 +82,11 @@ result {
 
 ## May contain traces of RTFM 📖
 
-I know it all sounds super easy but do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home.
+I know it all sounds super easy but do me (and yourself) a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home. Not only that document is more up-to-date than this demo, but it also uses examples that don't make the use of `FSharp.ValidationBlocks.Operators` making them easier to understand. For instance here it's not immediately obvious that the `_.Validate` function returns a list of errors.
 
 ## 🚨 Fable users: read this 👇
 
-* With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable` <u>instead of</u> <s>`FSharp.ValidationBlocks`</s>
+* With Fable you'll have to use the package and namespace `FSharp.ValidationBlocks.Fable`, <u>not</u> `FSharp.ValidationBlocks`
   ```fsharp
   open FSharp.ValidationBlocks.Fable
   ```
@@ -111,11 +112,11 @@ I know it all sounds super easy but do me and yourself a favor, [read the projec
 
 ## Share the love 💙
 
-Excited about this? Spread the word!&nbsp;
+Excited about this? Spread the word to your fellow dev!&nbsp;
 <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-url="https://impure.fun/FSharp.ValidationBlocks/demo/"
   data-related="luislikeiewis"
   data-size="large">
-  Tweet
+  Share this
 </a>
