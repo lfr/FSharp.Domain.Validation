@@ -150,7 +150,7 @@ There's a `System.Text.Json.Serialization.JsonConverter` included, if you add it
 
 ## Not just strings
 
-Strings are the perfect example as it's usually the first type for which developers stitch together validation logic, but this library works with anything, you can create a `PositiveInt` that's guaranteed to be greater than zero, or a `FutureDate` that's guaranteed to not be in the past. Lists, vectors, any type of object really, if you can write a predicate against it, you can validate it. They're 100% generic so the sky is the limit.
+Strings are the perfect example as it's usually the first type for which developers stitch together validation logic, but this library works with anything, you can create a `PositiveInt` that's guaranteed to be greater than zero, or a `FutureDate` that's guaranteed to not be in the past. Lists, vectors, any type of object really, if you can write a predicate against it, you can validate it. It's 100% generic so the sky is the limit.
 
 ## Ok looks good, but I'm still not sure
 
