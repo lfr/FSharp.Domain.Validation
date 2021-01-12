@@ -60,7 +60,7 @@ While not strictly necessary, the next single line of code greatly improves the 
 type TextBlock = inherit IBlock<string, TextError>
 ```
 
-### Declaring ValidationBlocks
+### Declaring validation blocks
 Type declaration is reduced to the absolute minimum. A type is given a name, a private constructor, and the interface above that essentially makes it a **ValidationBlock** and ensures that you define the validation rule.
 
 The  validation rule is a function of the primitive type (`string` here) that returns a list of one or more errors depending on the stated conditions.
