@@ -116,7 +116,9 @@ Excited about this? Spread the word to your fellow dev!&nbsp;
     // etc…
   ```
 
-* The function `Unchecked.blockof` won't be available in Fable until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with with something like:
+<a id="Unchecked.blockof" />
+
+* The function `Unchecked.blockof` won't be available in Fable until [Fable#2321](https://github.com/fable-compiler/Fable/issues/2321) is closed, so for now the only way to quickly skip `Result<_,_>` is with something like:
   ```fsharp
   |> function Ok x -> x | _ -> failwith "💣"
   ```
