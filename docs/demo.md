@@ -58,14 +58,7 @@ So declaring types requires very little code, and validating does too! In fact t
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
 
-// dummy domain (dumdom?)
-type MyDomain =
-  {
-    TextProp: Text
-    FreeTextProp: FreeText
-  }
-
-// this creates a validated MyDomain record:
+// this creates a validated record:
 result {
 
   let! text = validate inp1
