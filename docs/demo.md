@@ -23,7 +23,7 @@ match 'type with
 | Integer  -> check that it can be parsed to int
 ```
 
-As it turns out, it does nothing of the sort, in fact `validate` is not even defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our own custom types `Text`, `FreeText`, and `Integer`.
+Turns out it does nothing of the sort, in fact `validate` is not even defined anywhere in the code! It's a generic function from `FSharp.ValidationBlocks`, one that has no awareness of our own custom types `Text`, `FreeText`, and `Integer`.
 
 ## 100% Object-free ✔
 
