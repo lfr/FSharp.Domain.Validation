@@ -76,7 +76,9 @@ result {
 
 ## May contain traces of RTFM 📖
 
-I know it all sounds super easy but do me (and yourself) a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home. Not only that document is more up-to-date than this demo, but it also uses examples that don't make the use of `FSharp.ValidationBlocks.Operators` making them easier to understand. For instance here it's not immediately obvious that the `_.Validate` function returns a list of errors.
+I know it all sounds super easy but do me and yourself a favor, [read the project's README](https://github.com/lfr/FSharp.ValidationBlocks) before trying this at home. Not only it's more up-to-date than this demo, but it also uses examples that don't make the use of `FSharp.ValidationBlocks.Operators` making them more stock F# and easier to follow.
+
+For instance here it's not immediately obvious that the `_.Validate` function returns a list of errors.
 
 ## Share the love 💙
 
