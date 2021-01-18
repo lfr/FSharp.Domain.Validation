@@ -53,7 +53,7 @@ type Text = private Text of FreeText with
 
 ## Certified KISS™ ✔
 
-So declaring types requires very little code, and validating does too! In fact the validation function doesn't even have to specify a type in most cases like in the code below:
+So declaring types requires very little code, but so does validating! Most of the time the function `validate` doesn't even have to specify a type like in the code below:
 
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
