@@ -27,7 +27,7 @@ Turns out it does nothing of the sort, in fact `validate` is not even defined an
 
 ## 100% Object-free ✔
 
-You may be thinking "*ok then `FreeText` is an object with a constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a **validation rule** with a **type name**. The interface below is only used to identify it as a validation block and conveniently enforce the definition of a validation rule with the appropriate signature:
+You may be thinking "*ok then `FreeText` is an object with a constructor that validates a string*", but it's in fact much simpler than that, it's just a combination of a **validation rule** with a **type name**. The interface below is only used to identify it as a validation block, and conveniently enforce the definition of a validation rule with the appropriate signature:
 
 ```fsharp
 type FreeText = private FreeText of string with
