@@ -57,6 +57,7 @@ So declaring types requires very little code, and validating does too! In fact t
 
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
+open FSToolkit.ErrorHandling
 
 // this creates a validated record:
 result {
