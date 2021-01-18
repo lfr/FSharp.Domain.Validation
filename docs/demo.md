@@ -37,7 +37,7 @@ type FreeText = private FreeText of string with
       // 🤯
 ```
 
-This simplicity is not just a nicety, if you're going to replace **ᴀʟʟ** your validated strings with similar types, [and you definitely should](https://impure.fun/fun/2020/03/04/these-arent-the-types/), it's important that these can be defined with minimal code.
+This simplicity is not just a nicety, if you're going to replace all your validated strings with similar types, [and you definitely should](https://impure.fun/fun/2020/03/04/these-arent-the-types/), it's important that these can be defined with minimal code.
 
 ## Certified DRY™ ✔
 
