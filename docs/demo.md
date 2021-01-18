@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Fable validation demo 💙
+title: Fable validation demo
 permalink: /demo/
 description: >-
   Do not go gentle into that impure night
