@@ -9,7 +9,7 @@ image: /assets/2021/fable-validation-blocks.png
 
 # Fable validation demo 💙
 
-Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` just converts `Result<_,_>` to readable text.
+Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` just converts `Result<_,_>` using `%A` and different emojis for success and error.
 <div class="object-container">
     <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
 </div>
