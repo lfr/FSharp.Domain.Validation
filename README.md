@@ -46,11 +46,14 @@ First you declare your error types, then you declare your actual domain types (i
 Before declaring types like the one above, you do need define your error type. This can be a brand new validation-specific discriminated union or part of an existing one.
 
 ```fsharp
+// These are just an example, create whatever errors
+// you need to return from your own validation rules
 type TextError =
     | ContainsControlCharacters
     | ContainsTabs
     | IsTooLong of int
     | IsMissingOrBlank
+    // ...
 ```
 
 While not strictly necessary, the next single line of code greatly improves the readability of your type declarations by abbreviating the `IBlock<_,_>` interface for a specific primitive type.
