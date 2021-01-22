@@ -54,10 +54,10 @@ type Text = private Text of FreeText with
 ## Certified KISS™ ✔
 
 So declaring types requires very little code, but so does validating! Most of the time the function `validate` doesn't even have to specify a type like in the code below:
-<a name="KISS" />
+
 ```fsharp
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
-open FSToolkit.ErrorHandling
+open FsToolkit.ErrorHandling
 
 // this creates a validated record:
 result {
