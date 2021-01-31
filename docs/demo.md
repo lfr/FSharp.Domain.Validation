@@ -58,8 +58,8 @@ So declaring types requires very little code, but so does validating! Most of th
 open type FSharp.ValidationBlocks.Block<str, TxtErr>
 open FsToolkit.ErrorHandling
 
-// this creates a valid(ated) record
-// using a validation CE from FsToolkit.ErrorHandling
+// this creates a valid(ated) record using
+// a validation CE from FsToolkit.ErrorHandling
 validation {
 
   let! text = validate inp1
