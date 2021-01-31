@@ -27,14 +27,14 @@
             </tr>
             <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
             <tr><td class="comment">// Register our listener</td><td></td></tr>
-            <tr><td>box.oninput <span class="keyword">&lt;- fun</span> _ <span class="keyword">-&gt;</span></td><td></td></tr>
+            <tr><td>inp.oninput <span class="keyword">&lt;- fun</span> _ <span class="keyword">-&gt;</span></td><td></td></tr>
 
 
             <!-- Example 1 -->
             <tr><td>&nbsp;</td><td></td></tr>
             <tr><td>&nbsp;&nbsp;result1.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Text</span>&gt; box.value</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Text</span>&gt; inp.value</td>
                 <td>// Defined as non-multiline text</td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
             <tr><td>&nbsp;</td><td></td></tr>
             <tr><td>&nbsp;&nbsp;result2.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">FreeText</span>&gt; box.value</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">FreeText</span>&gt; inp.value</td>
                 <td>// Defined as any non-blank text</td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@
             <tr><td>&nbsp;</td><td></td></tr>
             <tr><td>&nbsp;&nbsp;result3.textContent <span class="keyword">&lt;-</span></td><td></td></tr>
             <tr>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Integer</span>&gt; box.value</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;<!--<span class="type">Block</span>.-->validate&lt;<span class="type">Integer</span>&gt; inp.value</td>
                 <td>// Defined as parseable to int</td>
             </tr>
             <tr>
