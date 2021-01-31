@@ -13,7 +13,7 @@
 
 A tiny F# library with huge potential to simplify your domain design, as you can see from the examples below:
 <a name="anchor">
-| <center>Without ValidationBlocks</center> | <center>With ValidationBlocks<a name="anchor2" /></center> |
+| <center>Without this package</center> | <center>Using this package<a name="anchor2" /></center> |
 |---|---|
 |<pre><a href="#anchor"><img src="assets/style-single-case.svg" alt="// Single-case union style" width="100%" /></a><br>type Tweet = private Tweet of string<br>module Tweet =<br>  let validate = function<br>  &#124; s when String.IsNullOrWhitespace s →<br>     IsMissingOrBlank &#124;&gt; Error<br>  &#124; s when s.Length > 280 →<br>     IsTooLong 280 &#124;&gt; Error<br>  &#124; s → Tweet s &#124;&gt; Ok<br>  let value (Tweet s) = x in s<br><br><a href="#anchor"><img src="assets/style-oo.svg" alt="// Object-oriented style" width="100%" /></a><br>type Tweet private (s) = class end with<br>   static member Validate = function<br>   &#124; s when String.IsNullOrWhitespace s →<br>      IsMissingOrBlank &#124;&gt; Error<br>   &#124; s when s.Length > 280 →<br>      IsTooLong 280 &#124;&gt; Error<br>   &#124; s → Tweet s &#124;&gt; Ok<br>   interface IConstrained&lt;string&gt; with<br>      member x.Value = s</pre><a href="#anchor2"><img src="assets/scroll.svg" width="80%" /></a>|<pre>type Tweet = private Tweet of Text with<br>   interface TextBlock with<br>      member _.Validate =<br>         fun s -> s.Length > 280 => IsTooLong 280</pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>➡&nbsp;</small>[See the live demo](https://impure.fun/FSharp.ValidationBlocks/demo/)
 
