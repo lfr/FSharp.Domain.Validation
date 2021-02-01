@@ -8,7 +8,7 @@
 <br>
 
 <p>
-    <img width="80%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
+    <img width="100%" src="https://raw.githubusercontent.com/lfr/FSharp.ValidationBlocks/master/logo/hd.png">
 </p>
 
 A tiny F# library with huge potential to simplify your domain design, as you can see from the examples below:
