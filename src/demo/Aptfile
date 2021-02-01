@@ -1,1 +1,3 @@
-﻿:repo:deb [trusted=yes arch=amd64] https://packages.microsoft.com/ubuntu/16.04/prod xenial main
+﻿:repo:deb [trusted=yes] https://packages.microsoft.com/ubuntu/16.04/prod xenial main
+apt-transport-https
+dotnet-sdk-5.0
