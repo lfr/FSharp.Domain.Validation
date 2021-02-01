@@ -10,7 +10,7 @@ description: >-
 
 Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` is just a one-liner that renders `Result<_,_>`'s content using different emojis for success and error.
 <div class="object-container">
-    <object type="text/html" data="https://validation-blocks-fable.herokuapp.com/"></object>
+    <object type="text/html" data="https://fable-validation.herokuapp.com/"></object>
 </div>
 
 Perhaps you have something like this in mind:
