@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Version>0.9.78</Version>
+		<Authors>Luis Ferrao</Authors>
+		<Company>Luis Ferrao</Company>
+		<Product>FSharp.Domain.Validation</Product>
+		<Description>This package only contains abstractions and shouldn't be referenced by your projects in most cases</Description>
+		<Copyright>Copyright © 2021 Luis Ferrao</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
+		<PackageIcon>square.png</PackageIcon>
+		<PackageTags>validation blocks fsharp ddd domain</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Utils.fs" />
+		<Compile Include="Interface.fs" />
+		<Compile Include="AssemblyInfo.fs" />
+	</ItemGroup>
+
+	<!-- Requred for Fable -->
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs; **\*.fsi" Visible="false">
+			<PackagePath>.\fable\</PackagePath>
+		</Content>
+		<Content Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\logo\square.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

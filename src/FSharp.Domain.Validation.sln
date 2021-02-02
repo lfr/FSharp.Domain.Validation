@@ -9,6 +9,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharp.Domain.Validation.Fa
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "demo", "demo\demo.fsproj", "{D7EE84D3-7323-46B8-9E52-70CD7E955C3C}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharp.Domain.Validation.Common", "FSharp.Domain.Validation.Common\FSharp.Domain.Validation.Common.fsproj", "{4E55EFFA-89E8-4040-8000-3254BC3BD013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D7EE84D3-7323-46B8-9E52-70CD7E955C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7EE84D3-7323-46B8-9E52-70CD7E955C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7EE84D3-7323-46B8-9E52-70CD7E955C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E55EFFA-89E8-4040-8000-3254BC3BD013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E55EFFA-89E8-4040-8000-3254BC3BD013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E55EFFA-89E8-4040-8000-3254BC3BD013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E55EFFA-89E8-4040-8000-3254BC3BD013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

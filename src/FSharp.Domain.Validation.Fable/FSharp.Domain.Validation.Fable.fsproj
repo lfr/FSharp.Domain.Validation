@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.77</Version>
+		<Version>0.9.78</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
-		<Product>FSharp.Domain.Validation.Fable</Product>
+		<Product>FSharp.Domain.Validation</Product>
 		<Description>Designing with types requires a lot of code - this library fixes that for Fable</Description>
 		<Copyright>Copyright © 2021 Luis Ferrao</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/lfr/FSharp.ValidationBlocks</PackageProjectUrl>
-		<PackageTags>validation blocks fsharp ddd domain fable</PackageTags>
+		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
+		<PackageTags>validation blocks fsharp ddd domain fable javascript</PackageTags>
 		<PackageIcon>square.png</PackageIcon>
 		<PackageIconUrl />
 		<PackageId>FSharp.Domain.Validation.Fable</PackageId>
@@ -30,7 +30,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="Types.fs" />
 		<Compile Include="Block.fs" />
 		<Compile Include="Operators.fs" />
 		<Compile Include="Thoth.fs" />
@@ -53,12 +52,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Fable.Core" Version="3.2.2" />
-		<PackageReference Include="Thoth.Json" Version="5.0.0" />
+		<PackageReference Include="Fable.Core" Version="3.2.3" />
+		<PackageReference Include="Thoth.Json" Version="5.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\FSharp.Domain.Validation\FSharp.Domain.Validation.fsproj" />
+	  <ProjectReference Include="..\FSharp.Domain.Validation.Common\FSharp.Domain.Validation.Common.fsproj" />
 	</ItemGroup>
 
 </Project>

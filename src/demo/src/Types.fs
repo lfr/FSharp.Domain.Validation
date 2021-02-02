@@ -1,7 +1,7 @@
 ﻿[<AutoOpen>]
 module Types
 
-open FSharp.ValidationBlocks.Fable
+open FSharp.ValidationBlocks
 open FSharp.ValidationBlocks.Utils
 //open FSharp.ValidationBlocks.Fable.Operators
 open System
@@ -12,7 +12,6 @@ type TextError =
     | ContainsControlCharacters
     | IsMissingOrBlank
     | IsNotAValidInteger
-
 
 
 // 2. This interface in not strictly necessary but it makes

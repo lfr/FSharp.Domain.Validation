@@ -2,6 +2,7 @@
 
 open Fable.Core.JsInterop
 open Microsoft.FSharp.Reflection
+open FSharp.ValidationBlocks
 open System.Reflection
 
 type Type = System.Type
