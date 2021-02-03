@@ -1,46 +1,39 @@
-﻿namespace FSharp.ValidationBlocks
+﻿namespace FSharp.Domain.Validation
 
-#if FABLE_COMPILER
-[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
-module Serialization =
-    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
-#else
 open System.Text.Json
 open System.Text.Json.Serialization
-open FSharp.ValidationBlocks.Reflection
+open FSharp.Domain.Validation.Reflection
 
 module Serialization =
 
-    type private ValidationBlockJsonConverter<'block> () =
-        inherit JsonConverter<'block>()
+    type private ValidationJsonConverter<'box> () =
+        inherit JsonConverter<'box>()
             
-        override _.CanConvert t = typeof<'block>.IsAssignableFrom(t)
+        override _.CanConvert t = typeof<'box>.IsAssignableFrom(t)
     
         override _.Read(reader, t, options) =            
-            let bi = t |> blockInfo
+            let bi = t |> boxinfo
             let value = JsonSerializer.Deserialize(&reader, bi.BaseType, options)
             let result = Runtime.verbatim t value
             result.Unbox()
             
         override _.Write (writer, value, options) =
-            let bi = value.GetType() |> blockInfo
-            JsonSerializer.Serialize(writer, value |> Block.unwrap, bi.BaseType, options)
+            let bi = value.GetType() |> boxinfo
+            JsonSerializer.Serialize(writer, value |> Box.unwrap, bi.BaseType, options)
 
 
-    type ValidationBlockJsonConverterFactory() =
+    type ValidationJsonConverterFactory() =
         inherit JsonConverterFactory()
 
-        let typedef = typedefof<ValidationBlockJsonConverter<_>>
+        let typedef = typedefof<ValidationJsonConverter<_>>
 
-        let implementsIBlock (t:System.Type) =
+        let implementsIBox (t:System.Type) =
             t.GetInterfaces() |> Array.exists (fun i -> i.IsGenericType &&
-                i.GetGenericTypeDefinition() = typedefof<IBlock<_,_>>)    
+                i.GetGenericTypeDefinition() = typedefof<IBox<_,_>>)    
                 
         override _.CanConvert t =
-            t |> typeof<IBlock>.IsAssignableFrom && t |> implementsIBlock
+            t |> typeof<IBox>.IsAssignableFrom && t |> implementsIBox
                 
         override _.CreateConverter (t, _) =
             let converterType = typedef.MakeGenericType([|t|])
             System.Activator.CreateInstance converterType :?> JsonConverter
-
-#endif

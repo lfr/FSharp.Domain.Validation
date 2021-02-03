@@ -34,9 +34,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\FSharp.Domain.Validation.Fable\FSharp.Domain.Validation.Fable.fsproj" />
 	</ItemGroup>
-	<!--<ItemGroup>
-		<ProjectReference Include="..\FSharp.ValidationBlocks.Fable\FSharp.ValidationBlocks.Fable.fsproj" />
-	</ItemGroup>-->
 	<ItemGroup>
 		<PackageReference Update="FSharp.Core" Version="5.0.0" />
 	</ItemGroup>

@@ -1,47 +1,40 @@
-﻿namespace FSharp.ValidationBlocks
+﻿namespace FSharp.Domain.Validation
 
-type BlockInfo =
+type BoxInfo =
     {
         BaseType : System.Type
         ErrorType : System.Type
         ValidateMethod : System.Reflection.MethodInfo
     }
 
-#if FABLE_COMPILER
-[<System.Obsolete("For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks.")>]
-module Reflection =
-    do failwith "For Fable projects use FSharp.ValidationBlocks.Fable instead of FSharp.ValidationBlocks."
-#else
 module Reflection =
 
     type Flags = System.Reflection.BindingFlags
-    //let ``nameof noBlock.Validate`` = "Validate"
-    //let ``nameof blockType`` = "blockType"
     
-    let private noBlock = Unchecked.defaultof<IBlock<obj,obj>>
+    let private noBox = Unchecked.defaultof<IBox<obj,obj>>
     let private typeError (t:System.Type) =
-        sprintf "'%s' is not a ValidationBlock." t.Name
-    let internal isBlock (t:System.Type) =
-        t.GetInterfaces() |> Array.exists ((=) typeof<IBlock>)
+        sprintf "'%s' is not a Validation box." t.Name
+    let internal isBox (t:System.Type) =
+        t.GetInterfaces() |> Array.exists ((=) typeof<IBox>)
     
-    let mutable private biCache : Map<System.Guid, BlockInfo> = Map.empty
-    /// Gets reflection information about the specified block type
-    let blockInfo (blockType:System.Type) =
+    let mutable private biCache : Map<System.Guid, BoxInfo> = Map.empty
+    /// Gets reflection information about the specified box type
+    let boxinfo (boxType:System.Type) =
         biCache
-        |> Map.tryFind blockType.GUID
+        |> Map.tryFind boxType.GUID
         |> Option.defaultWith
             (fun () ->
-                if isBlock blockType then
+                if isBox boxType then
                     let validateMi =
-                        blockType.GetMethods(Flags.NonPublic ||| Flags.Instance)
+                        boxType.GetMethods(Flags.NonPublic ||| Flags.Instance)
                         |> Array.find
-                            (fun mi -> nameof noBlock.Validate |> mi.Name.EndsWith)
+                            (fun mi -> nameof noBox.Validate |> mi.Name.EndsWith)
                     let bi =
-                        blockType.GetInterfaces()
+                        boxType.GetInterfaces()
                         |> Array.find
                             (fun i ->
                                 i.IsGenericType &&
-                                i.GetGenericTypeDefinition() = typedefof<IBlock<_,_>>)
+                                i.GetGenericTypeDefinition() = typedefof<IBox<_,_>>)
                         |> fun i -> i.GetGenericArguments()
                         |> fun x ->
                             {
@@ -50,8 +43,6 @@ module Reflection =
                                 ValidateMethod = validateMi
                             
                             }
-                    biCache <- biCache |> Map.add blockType.GUID bi
+                    biCache <- biCache |> Map.add boxType.GUID bi
                     bi
-                else typeError blockType |> invalidArg (nameof blockType))
-
-#endif
+                else typeError boxType |> invalidArg (nameof boxType))

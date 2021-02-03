@@ -1,4 +1,4 @@
-﻿namespace FSharp.ValidationBlocks
+﻿namespace FSharp.Domain.Validation
 
 open System
 
@@ -20,7 +20,11 @@ module Utils =
 
     /// Removes leading and trailing whitespace/control characters as well as
     /// any occurrences of the null (0x0000) character
-    let inline canonicalize (inp:'a) (inpType:System.Type) : 'a =
+    let
+        #if FABLE_COMPILER
+        inline
+        #endif
+        canonicalize (inp:'a) (inpType:System.Type) : 'a =
         match box inp with
         | null -> null
         | x when inpType <> typeof<string> -> x
@@ -29,7 +33,7 @@ module Utils =
 
     /// Converts 'PascalCase' to 'lower case'.
     /// This can be useful to convert error union cases to error messages.
-    let inline depascalize (s:string) =        
+    let depascalize (s:string) =        
         s.ToCharArray ()
         |> Array.mapi
             (fun i c ->

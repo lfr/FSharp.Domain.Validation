@@ -1,13 +1,12 @@
 ﻿[<AutoOpen>]
 module Types
 
-open FSharp.ValidationBlocks
+open FSharp.ValidationBlocks.Fable
 open FSharp.ValidationBlocks.Utils
-//open FSharp.ValidationBlocks.Fable.Operators
 open System
 
 
-// 1. Define all the possible errors that the blocks can yield
+// 1. Define all the possible errors that the boxes can yield
 type TextError =
     | ContainsControlCharacters
     | IsMissingOrBlank
@@ -27,7 +26,7 @@ type FreeText = private FreeText of string with
             fun s ->
                 [if String.IsNullOrWhiteSpace s then IsMissingOrBlank]
 
-    // can be simplified using FSharp.ValidationBlocks.Operators:
+    // can be simplified using FSharp.Domain.Validation.Operators:
     // member _.Validate =
     //    String.IsNullOrWhiteSpace ==> ``Is missing or blank``
                             
@@ -48,8 +47,8 @@ type Integer = private Integer of FreeText with
 
 
 
-/// This type can be used to test that FSharp.ValidationBlocks.Fable throws
-/// exceptions with blocks of types that are discriminated unions,
+/// This type can be used to test that FSharp.Domain.Validation.Fable throws
+/// exceptions with boxes of types that are discriminated unions,
 /// test with: Block.validate<TestDu> (Ok "some text")
 [<System.Obsolete>]
 type TestDu = private TestDu of Result<string, string> with

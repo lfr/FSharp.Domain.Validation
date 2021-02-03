@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>0.9.78</Version>
+		<Version>0.9.78-rc2</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company>Luis Ferrao</Company>
 		<Product>FSharp.Domain.Validation</Product>
@@ -11,12 +11,17 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
 		<PackageIcon>square.png</PackageIcon>
-		<PackageTags>validation blocks fsharp ddd domain</PackageTags>
+		<PackageTags>validation boxes fsharp ddd domain</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <OutputPath>..\.package-bin\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Include="Utils.fs" />
-		<Compile Include="Interface.fs" />
+		<Compile Include="IBox.fs" />
 		<Compile Include="AssemblyInfo.fs" />
 	</ItemGroup>
 
@@ -25,8 +30,12 @@
 		<Content Include="*.fsproj; **\*.fs; **\*.fsi" Visible="false">
 			<PackagePath>.\fable\</PackagePath>
 		</Content>
+		<Compile Include="_deprecated.fs" />
 		<Content Remove="obj\**" />
 		<EmbeddedResource Remove="obj\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Remove="_deprecated.fs" />
 	</ItemGroup>
 
 	<ItemGroup>

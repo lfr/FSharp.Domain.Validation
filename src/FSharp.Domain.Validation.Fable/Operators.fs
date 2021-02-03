@@ -1,12 +1,10 @@
-﻿namespace FSharp.ValidationBlocks.Fable
-
-open FSharp.ValidationBlocks.Fable.Block
+﻿namespace FSharp.Domain.Validation
 
 [<AutoOpen>]
 module NamespaceOperators =
 
-    /// Same as Block.value
-    let inline (~%) block = value block
+    /// Same as Box.value
+    let inline (~%) box = Box.value box
 
 module Operators = 
     
