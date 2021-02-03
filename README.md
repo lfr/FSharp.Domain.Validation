@@ -1,4 +1,4 @@
-⚠ You can test the **new library & namespace** by referencing [👉 0.9.78-rc2](https://www.nuget.org/packages?packagetype=&sortby=relevance&q=FSharp.Domain.Validation&prerel=True) from your project 🎉
+⚠ You can test the **new library & namespace** by referencing 🔗&nbsp;[0.9.78-rc2](https://www.nuget.org/packages?packagetype=&sortby=relevance&q=FSharp.Domain.Validation&prerel=True) from your project 🎉
 
 
 <sup>Older API available here:</sup>&nbsp;&nbsp;[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)
