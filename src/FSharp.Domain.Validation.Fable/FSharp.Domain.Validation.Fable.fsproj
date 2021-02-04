@@ -12,7 +12,7 @@
 		<Copyright>Copyright © 2021 Luis Ferrao</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
-		<PackageTags>validation boxes fsharp ddd domain fable javascript</PackageTags>
+		<PackageTags>validation blocks fsharp ddd domain fable javascript</PackageTags>
 		<PackageIcon>square.png</PackageIcon>
 		<PackageIconUrl />
 		<PackageId>FSharp.Domain.Validation.Fable</PackageId>
