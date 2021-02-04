@@ -130,13 +130,13 @@ Box.validate<Tweet> s // → Ok Tweet | Error e
 ⚠ Do **not** force type inference using type annotations as it's unnecessarily verbose:
 
 ```fsharp
-// incorrect example, do not copy/paste
-let email : Result<Email, TextError list> =      // :(
+// incorrect example, do *not* copy/paste
+let result : Result<Email, TextError list> = // :(
     Box.validate "incorrect@dont.do"
 
-// correct alternative
-let email =
-    Box.validate<Email> "dev@fsharp.lang" // :)
+// correct alternative when type inference isn't available
+let result =
+    Box.validate<Email> "dev@fsharp.lang"    // :)
 ```
 
 In both cases the resulting `email` is of type `Result<Email, TextError list>`.
@@ -147,7 +147,8 @@ The `Box.validate` method returns a `Result`, which may not always be necessary,
 ```fsharp
 // throws an exception if not valid
 Unchecked.boxof "this better be valid"         // → 'box (inferred)
-// same as above without type inference
+
+// same as above, when type inference is not available
 Unchecked.boxof<Text> "this better be valid 2" // → Text
 ```
 
@@ -169,11 +170,9 @@ If your project satisfies all of the above this library is for you!
 
 It dramatically reduces the amount of code necessary to make illegal states unrepresentable while being tiny and built only with `FSharp.Core`. It uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Box.validate` and `Box.value` or just make the single case constructors public.
 
-In addition to the above, if you use the provided **JsonConverter**, your types will be serialized as their primitive type (i.e. string) and not as Validation boxes, so you're not adding any indirect dependency between this library and whatever is on the other side of your serialization.
-
 ## Conclusion
 
-Using this library you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain code files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
+Using this library you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain definition files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
 
 ### Full working example
 You can find a full working example in the file [Text.fs](/src/Example/Text.fs)
