@@ -1,5 +1,5 @@
-[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)
-[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=Standard)](https://www.nuget.org/packages/FSharp.Domain.Validation/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)
 <br>
 
 <p>
@@ -162,7 +162,7 @@ If your project satisfies all of the above this library is for you!
 
 It dramatically reduces the amount of code necessary to make illegal states unrepresentable while being tiny and built only with `FSharp.Core`. It uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Box.validate` and `Box.value` or just make the single case constructors public.
 
-## Ready to try it for yourself?
+## Ready to try it?
 
 There are two packages, make sure you only reference the one you need:
 
@@ -171,7 +171,7 @@ There are two packages, make sure you only reference the one you need:
 |Standard|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)|
 |Fable|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)|
 
-You can check the [project source code](https://github.com/lfr/FSharp.Domain.Validation/tree/master/src/demo) behind the live demo. You can also look into [Text.fs](/src/Example/Text.fs) for an example of strings boxes which are the by far the most common type of boxes.
+You can check the [project source code](https://github.com/lfr/FSharp.Domain.Validation/tree/master/src/demo) behind the live demo. You can also look into [Text.fs](/src/Example/Text.fs) for an example of string boxes which are the by far the most common type of boxes.
 
 ## Conclusion
 
