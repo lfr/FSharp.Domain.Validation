@@ -131,7 +131,7 @@ let result =
     Box.validate<Email> "dev@fsharp.lang"    // :)
 ```
 
-In both cases the resulting `email` is of type `Result<Email, TextError list>`.
+In both cases `result` is of type `Result<Email, TextError list>`.
 
 ## Exceptions instead of Error
 The `Box.validate` method returns a `Result`, which may not always be necessary, for instance when de-serializing values that are guaranteed to be valid, you can just use:
