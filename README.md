@@ -167,7 +167,7 @@ It dramatically reduces the amount of code necessary to make illegal states unre
 There are two packages, make sure you only reference the one you need:
 
 | Project type | <center>Package</center> |
-|---|--:|
+|---|:--|
 |Standard|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)|
 |Fable|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)|
 
