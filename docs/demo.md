@@ -8,7 +8,7 @@ description: >-
 
 # Fable validation demo 💙
 
-Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` is just a one-liner that renders `Result<_,_>` using different emojis for success and error.
+Type something below and try to guess what `validate` does, knowing that the helper `Result.toText` is just a one-liner that renders `Result<>` using different emojis for success and error.
 <div class="object-container">
     <object type="text/html" data="https://fable-validation.herokuapp.com/"></object>
 </div>
