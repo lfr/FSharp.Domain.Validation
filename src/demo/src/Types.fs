@@ -1,8 +1,8 @@
 ﻿[<AutoOpen>]
 module Types
 
-open FSharp.ValidationBlocks.Fable
-open FSharp.ValidationBlocks.Utils
+open FSharp.Domain.Validation
+open FSharp.Domain.Validation.Utils
 open System
 
 
@@ -15,7 +15,7 @@ type TextError =
 
 // 2. This interface in not strictly necessary but it makes
 // type declarations and function signatures a more readable
-type TextBlock = inherit IBlock<string, TextError>
+type TextBlock = inherit IBox<string, TextError>
 
 
 // 3. Define your custom types
@@ -47,11 +47,11 @@ type Integer = private Integer of FreeText with
 
 
 
-/// This type can be used to test that FSharp.Domain.Validation.Fable throws
+/// This type can be used to test that Fable's FSharp.Domain.Validation throws
 /// exceptions with boxes of types that are discriminated unions,
 /// test with: Block.validate<TestDu> (Ok "some text")
 [<System.Obsolete>]
 type TestDu = private TestDu of Result<string, string> with
-    interface IBlock<Result<string, string>, TextError> with
+    interface IBox<Result<string, string>, TextError> with
         member _.Validate = fun _ -> []
 

@@ -2,16 +2,16 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>0.9.78-rc2</Version>
+		<Version>0.9.78</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company>Luis Ferrao</Company>
 		<Product>FSharp.Domain.Validation</Product>
-		<Description>This package only contains abstractions and shouldn't be referenced by your projects in most cases</Description>
+		<Description>This package is a dependency and should only be referenced for library development, for normal projects you want FSharp.Domain.Validation for non-Fable development, or FSharp.Domain.Validation.Fable for Fable projects</Description>
 		<Copyright>Copyright © 2021 Luis Ferrao</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
 		<PackageIcon>square.png</PackageIcon>
-		<PackageTags>validation blocks fsharp ddd domain</PackageTags>
+		<PackageTags>validation blocks boxes fsharp ddd domain</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>

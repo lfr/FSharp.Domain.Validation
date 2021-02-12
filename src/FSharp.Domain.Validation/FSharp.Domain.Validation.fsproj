@@ -5,7 +5,7 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>0.9.78-rc2</Version>
+		<Version>0.9.78</Version>
 		<Authors>Luis Ferrao</Authors>
 		<Company />
 		<Product>FSharp.Domain.Validation</Product>
@@ -13,7 +13,7 @@
 		<Copyright>Copyright © 2021 Luis Ferrao</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/lfr/FSharp.Domain.Validation</PackageProjectUrl>
-		<PackageTags>validation blocks fsharp domain ddd</PackageTags>
+		<PackageTags>validation blocks boxes fsharp domain ddd</PackageTags>
 		<PackageIcon>square.png</PackageIcon>
 		<PackageIconUrl />
 		<PackageId>FSharp.Domain.Validation</PackageId>

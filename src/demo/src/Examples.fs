@@ -2,8 +2,8 @@
 
 open Browser.Dom
 open Thoth.Json
-open FSharp.ValidationBlocks.Fable
-open FSharp.ValidationBlocks.Fable.Thoth
+open FSharp.Domain.Validation
+open FSharp.Domain.Validation.Thoth
 
 let pre = document.querySelector("pre") :?> Browser.Types.HTMLPreElement
 let box = document.querySelector("#inp") :?> Browser.Types.HTMLTextAreaElement
@@ -19,7 +19,7 @@ let sandbox () =
             {|
                 Block = typeof<FreeText>.Name
                 Value = 
-                    Block.validate<FreeText> box.value
+                    Box.validate<FreeText> box.value
                     |> function Ok x -> x | _ -> failwith "invalid"
             |}
 

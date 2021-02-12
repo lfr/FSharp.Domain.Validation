@@ -102,7 +102,7 @@ type Unchecked<'a> private () = class end with
 
     /// Creates a box from the given input if valid, otherwise throws an exception,
     /// use Unchecked.Boxof when return type can be inferred, otherwise Unchecked.Boxof<'box>
-    [<System.Obsolete("This is not currently supported in Fable (issue #2321).", true)>]
+    [<System.Obsolete("This is not currently supported in Fable (issue fable-compiler#2321).", true)>]
     // Missing reflection support:
     // 🔲 Type.GetInterface
     // ✅ Type.MakeGenericType

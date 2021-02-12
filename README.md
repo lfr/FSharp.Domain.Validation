@@ -1,13 +1,5 @@
-⚠ You can test the **new library & namespace** by referencing 🔗&nbsp;[0.9.78-rc2](https://www.nuget.org/packages?packagetype=&sortby=relevance&q=FSharp.Domain.Validation&prerel=True) from your project 🎉
-
-
-<sup>Older API available here:</sup>&nbsp;&nbsp;[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)
+[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)
 [![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)
-<!-- [![twitter](https://img.shields.io/twitter/follow/LuisLikeIewis?label=Follow%20%40IuisIikeIewis&style=social)](http://twitter.com/intent/user?screen_name=LuisLikeIewis)  -->
-
-|ꜰᴀʙʟᴇ|For Fable projects *only* reference the package `FSharp.Domain.Validation.Fable`|
-:---: | :---
-
 <br>
 
 <p>
@@ -27,7 +19,7 @@ You may have noticed that the examples on the left have an additional *not null 
 
 ## Interface? Really?
 
-F# is a multi-paradigm language, so there's nothing preventing us from harnessing (hijacking?) OO concepts for their expressiveness without any of the baggage. For instance here we use `interface` as an elegant way to both:
+F# is a multi-paradigm language, so there's nothing preventing us from harnessing (hijacking?) OP concepts for their expressiveness without any of the baggage. For instance here we use `interface` as an elegant way to both:
 
 * Identify a type as a Validation box
 * Enforce the definition of validation rules
@@ -170,9 +162,17 @@ If your project satisfies all of the above this library is for you!
 
 It dramatically reduces the amount of code necessary to make illegal states unrepresentable while being tiny and built only with `FSharp.Core`. It uses F# concepts in the way they're meant to be used, so if one day you decide to no longer use it, you can simply get rid of it and still keep all the single-case unions that you've defined. All you'll need to do is create your own implementation of `Box.validate` and `Box.value` or just make the single case constructors public.
 
+## Ready to try it for yourself?
+
+There are two packages, make sure you only reference the one you need:
+
+| Project type | <center>Package</center> |
+|---|--:|
+|Standard|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)|
+|Fable|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)|
+
+You can check the [project source code](https://github.com/lfr/FSharp.Domain.Validation/tree/master/src/demo) behind the live demo. You can also look into [Text.fs](/src/Example/Text.fs) for an example of strings boxes which are the by far the most common type of boxes.
+
 ## Conclusion
 
 Using this library you can create airtight domain objects guaranteed to never have invalid content. Not only you're writing less code, but your domain definition files are much smaller and nicer to work with. You'll also get [ROP](https://fsharpforfunandprofit.com/rop/) almost for free, and while there is a case to be made [against ROP](https://fsharpforfunandprofit.com/posts/against-railway-oriented-programming/), it's definitely a perfect match for content validation, especially content that may be entered by a user.
-
-### Full working example
-You can find a full working example in the file [Text.fs](/src/Example/Text.fs)
