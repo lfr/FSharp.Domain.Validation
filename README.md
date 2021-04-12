@@ -85,7 +85,7 @@ type FreeText = private FreeText of string with
             // same validation rule using validation operators
             String.IsNullOrWhiteSpace ==> IsMissingOrBlank
 ```
-To use validation operators make sure to open `FSharp.Domain.Validation.Operators` in the file(s) where you declare your Validation types. See [Text.fs](/src/Example/Text.fs#L57) for more examples of validation operators.
+To use validation operators make sure to open `FSharp.Domain.Validation.Operators` in the file(s) where you declare your Validation types. See [Text.fs](/src/FSharp.Domain.Validation/Example/Text.fs) for more examples of validation operators.
 
 ### Creating and using boxes in your code
 
