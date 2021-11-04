@@ -17,12 +17,12 @@ module ValidationBlocks =
 
         /// Removes leading and trailing whitespace/control characters as well as
         /// any occurrences of the null (0x0000) character
-        [<System.Obsolete("Use FSharp.Domain.Validation.Utils.containsControlCharacters instead.")>]
+        [<System.Obsolete("Use FSharp.Domain.Validation.Utils.canonicalize instead.")>]
         let canonicalize = canonicalize
 
         /// Converts 'PascalCase' to 'lower case'.
         /// This can be useful to convert error union cases to error messages.
-        [<System.Obsolete("Use FSharp.Domain.Validation.Utils.containsControlCharacters instead.")>]
+        [<System.Obsolete("Use FSharp.Domain.Validation.Utils.depascalize instead.")>]
         let depascalize = depascalize
 
         /// Returnes true if string contains control characters
