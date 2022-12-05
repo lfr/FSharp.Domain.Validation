@@ -171,7 +171,7 @@ There are two packages, make sure you only reference the one you need:
 |Standard|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation)](https://www.nuget.org/packages/FSharp.Domain.Validation/)|
 |Fable|[![nuget](https://img.shields.io/nuget/v/FSharp.Domain.Validation.Fable.svg?style=badge&logo=nuget&color=brightgreen&cacheSeconds=21600&label=FSharp.Domain.Validation.Fable)](https://www.nuget.org/packages/FSharp.Domain.Validation.Fable/)|
 
-You can check the [project source code](https://github.com/lfr/FSharp.Domain.Validation/tree/master/src/demo) behind the live demo. You can also look into [Text.fs](/src/Example/Text.fs) for an example of string boxes which are the by far the most common type of boxes.
+You can check the [project source code](https://github.com/lfr/FSharp.Domain.Validation/tree/master/src/demo) behind the live demo. You can also look into [Text.fs](/src/FSharp.Domain.Validation/Example/Text.fs) for an example of string boxes which are the by far the most common type of boxes.
 
 ## Conclusion
 
